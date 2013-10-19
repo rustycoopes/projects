@@ -6,39 +6,27 @@ from russpandora import RussPandora
 import logging
 
 class SonosForPandora(object):
-    '''
-    classdocs
-    '''
+    
+
     rpandora = None
     sonos = None
 
     def __init__(self):
-        sonos = SonosDiscovery()
-        logging.info('found the following sonos servers : ' + ','.join(sonos.get_speaker_ips()))
+        self.rpandora = RussPandora()
+        self.sonos = SonosDiscovery()
+        logging.info('found the following sonos servers : ' + ','.join(self.sonos.get_speaker_ips()))
  
     
-    def playStation(self, stationNameLike): 
-        if self.rpandora is None:
-            self.rpandora = RussPandora()
-        if self.sonos is None:
-            self.sonos = SonosDiscovery()    
-        
+    def playStation(self, stationNameLike, onSpeakerLike): 
+  
         stationId = self.rpandora.getIdForStation(stationNameLike)
         
-        masterId =  self.sonos.get_speaker_ips()[0]
-        
         for speakerIp in self.sonos.get_speaker_ips():
-            logging.info(str(speakerIp))
-            sonos = SoCo(str(speakerIp))
             all_info = sonos.get_speaker_info()
-            for item in all_info:
-                logging.info("    %s: %s" % (item, all_info[item]))
-            logging.info('co-ordinator = ' + str(sonos.get_group_coordinator(all_info['zone_name'], True)))
-            if sonos.get_group_coordinator(all_info['zone_name'], True) is not None:
-                sonos.unjoin()
-
-          
-                        
+            if onSpeakerLike in all_info['zone_name'] :
+                logging.info("Playing on speaker %s" % str(speakerIp))
+                sonos = SoCo(str(speakerIp))
+                sonos.play_uri("pndrradio:%s" % str(stationId), '')
                      
     def stopPlaying(self):
         
@@ -49,6 +37,18 @@ class SonosForPandora(object):
                 logging.info("Stopping for speaker %s: %s" % (item, all_info[item]))
             sonos.stop()
 
+
+    def listAll(self):
+    
+        for speakerIp in self.sonos.get_speaker_ips():
+            logging.info("********* %s ***********" % str(speakerIp))
+            sonos = SoCo(speakerIp)
+            all_info = sonos.get_speaker_info()
+            for item in all_info:
+                logging.info("    %s: %s" % (item, all_info[item]))
+            logging.info('co-ordinator = ' + str(sonos.get_group_coordinator(all_info['zone_name'], True)))
+            logging.info("****************************" )
+           
 
 if __name__ == "__main__":
   
@@ -61,5 +61,5 @@ if __name__ == "__main__":
     
     
     sonos = SonosForPandora()
-    sonos.playStation('Rod')
-    
+    sonos.listAll()
+    sonos.playStation('Rod', 'Kitchen')    

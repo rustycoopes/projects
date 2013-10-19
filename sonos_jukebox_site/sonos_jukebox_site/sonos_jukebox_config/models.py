@@ -14,3 +14,15 @@ class Configuration(models.Model):
     def __unicode__(self):
         return self.key
 
+
+class JukeboxShortCut(models.Model):
+    keys = models.CharField(max_length=3)
+    type = models.CharField(max_length=255)
+    track = models.CharField(max_length=255)
+
+    def __init__(self):
+        self.type = 'Pandora'
+ 
+    def __unicode__(self):
+        return self.keys
+
