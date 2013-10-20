@@ -33,7 +33,7 @@ class RussPandora(object):
         for station in self.stationList:
             if stationNameLike in station['stationName']:
                 stationId = station['stationId']
-                logging.info( 'found track')
+                logging.info( 'found track "%s"' % station['stationName'])
                 return stationId
             
         

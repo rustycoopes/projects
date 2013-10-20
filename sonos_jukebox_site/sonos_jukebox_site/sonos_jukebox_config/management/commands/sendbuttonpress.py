@@ -14,10 +14,10 @@ class Command(BaseCommand):
     help = 'Closes the specified poll for voting'
 
     def handle(self, *args, **options):
-        shortCutMgr = JukeboxShortCutManager()
         
-     
-        mgr = ConfigManager()
+        shortCutMgr = JukeboxShortCutManager()
+        configMgr = ConfigManager()
+        
         for shortCutKeys in args:
             
             logging.info('Sent short cut "%s"' % shortCutKeys)
@@ -25,13 +25,16 @@ class Command(BaseCommand):
             
             if shortCut != None:
             
-                speakerConfig = mgr.getConifgItem( "TARGET_SPEAKER")
+                speakerConfig = configMgr.getConifgItem( "TARGET_SPEAKER")
+                
                 logging.info('Short cut track is"%s" running from "%s"' % (shortCut.track, shortCut.type))
                 logging.info('Successfully read speaker to send to as "%s"' % (speakerConfig.value))
                 
                 if shortCut.type =="Pandora":
+                    
                     sonosPlayer = SonosForPandora()
                     sonosPlayer.playStation(shortCut.track, speakerConfig.value)
+                
                 else:
                     logging.error('Unsupported shortcut type %s' % shortCut.type )   
             else:

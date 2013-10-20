@@ -27,6 +27,8 @@ class SonosForPandora(object):
             if onSpeakerLike in all_info['zone_name'] :
                 logging.info("Playing on speaker %s" % str(speakerIp))
                 sonosSpeaker.play_uri("pndrradio:%s" % str(stationId), '')
+            else:
+                logging.info('Skipping player "%s"' % all_info['zone_name'])
                      
     def stopPlaying(self):
         
