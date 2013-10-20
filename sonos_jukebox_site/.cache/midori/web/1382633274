@@ -1,0 +1,258 @@
+/* :asset_packager_compatibility, 'config/asset_packages.yml' @ 1381527383 */
+
+
+/* :files, 'public/stylesheets/shared', ... @ (none) */
+
+
+/* :files, 'app/views', ... @ 1381527383 */
+/* app/views/read/store/_shared.css @ 1381527383 */
+.autogen_class_views_read_store_bought, .autogen_class_views_read_store_buy_now {background: #DBDEE0; border-top: 1px solid #cdd0d2; border-bottom: 1px solid #ced1d3; background: #ebebe9; border-top: 1px solid #d1d1d1; border-bottom: 1px solid #d1d1d1; box-shadow: inset 0px 0px 4px #c7c7c1, 0px 1px 0px white; margin: 12px 0}
+.autogen_class_views_read_store_bought h2, .autogen_class_views_read_store_buy_now h2 {color: #395b69 !important; text-shadow: 1px 1px 0px white}
+.autogen_class_views_read_store_bought hr, .autogen_class_views_read_store_buy_now hr {height: 1px; margin: 10px 0px; background: #B7B9BB; border: 0; border-bottom: 1px solid #ebeef0}
+.autogen_class_views_read_store_bought .description, .autogen_class_views_read_store_buy_now .description {font-size: 12px; text-shadow: 1px 1px 0px #f4f8fa}
+/* This is the buy doc bar */ .buy_doc_bar_inner {-webkit-user-select: none; background-color: #D2D6D8; border: 2px solid #cccccc; text-align: left}
+.buy_doc_bar_inner .contents {padding: 10px 15px 0 10px; overflow: auto}
+.buy_doc_bar_inner .headline {font-family: Proxima Nova, serif; font-size: 18px; color: #255D79; text-shadow: 1px 1px 1px white; padding-bottom: 5px}
+.buy_doc_bar_inner .message {font-family: Proxima Nova, sans-serif; font-size: 14px; text-shadow: 1px 1px 1px white; color: #58554F; max-width: 645px; white-space: normal; padding-bottom: 10px; border-bottom: 2px groove white; margin-bottom: 10px}
+.buy_doc_bar_inner .bar_list_price {font-size: 18px; text-shadow: 1px 1px 1px white; border-top: none; margin-top: 10px; margin-left: 10px; width: 300px; color: #58554F}
+/* The other in-between page missing stuff */ .page_missing_explanation {-moz-user-select: -moz-none; -webkit-user-select: none; user-select: none; -webkit-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2); -moz-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2); box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2); border: 1px solid #cfcfcf; margin-bottom: 9px !important}
+.page_missing_explanation .page_missing_explanation_inner {font-family: Proxima Nova, sans-serif; background: #EFF4F7; border-top: 1px solid white; padding: 10px 15px; font-size: 14px; text-align: left; color: #58554F; overflow: hidden}
+.page_missing_explanation .page_missing_explanation_inner span.missing_page_number_title {font-family: Proxima Nova, serif; font-size: 18px; color: #255D79}
+.page_missing_explanation .page_missing_explanation_inner span.missing_page_number {font-weight: bold}
+.page_missing_explanation .page_missing_explanation_inner .page_missing_explanation_contents {float: left}
+.page_missing_explanation .page_missing_explanation_inner .missing_page_buy_button {float: right}
+.page_missing_explanation .page_missing_explanation_inner .missing_page_buy_button .buy_button {left: 0}
+/*Here are the remote link buttons*/ #center_remote_link_buttons {margin-left: auto; margin-right: auto; margin-top: 10px; width: 209px}
+#remote_link_buttons {margin-bottom: 10px}
+#remote_link_buttons .remote_link_button {width: 209px; height: 30px; padding-top: 6px; padding-left: 24px; display: block; background: transparent url('/images/ppp/button.png?1381527416') no-repeat; white-space: nowrap}
+#remote_link_buttons .remote_link_button:hover {text-decoration: none; background-position: 0 -37px}
+#remote_link_buttons .remote_link_button:active {text-decoration: none; background-position: 0 -74px; height: 29px; padding-top: 7px}
+#remote_link_buttons .remote_link_button .more_info_icon {width: 27px; height: 28px; padding-right: 20px; background: transparent url('/images/ppp/info_icon.png?1381527416') no-repeat}
+#remote_link_buttons .remote_link_button .buy_icon {width: 28px; height: 28px; padding-right: 20px; background: transparent url('/images/ppp/buy_icon.png?1381527416') no-repeat}
+#remote_link_buttons .remote_link_button span {line-height: 18px; font-size: 18px; color: white; text-shadow: 1px 1px 1px #b38400}
+#remote_link_buttons .remote_branded_button {width: 280px; /* vertically center button(s) */ }
+#remote_link_buttons .remote_branded_button .buy_banner {float: left; padding-left: 28px; width: 112px; height: 40px; padding-top: 12px; margin-right: 10px; background: transparent url('/images/ppp/buy_banner.png?1381527416') no-repeat}
+#remote_link_buttons .remote_branded_button .buy_banner span {font-family: Georgia, Palatino, Palatino Linotype, Times, Times New Roman, serif; font-style: italic; font-size: 22px; color: white; text-shadow: 1px 1px 1px #b38400}
+#remote_link_buttons .remote_branded_button .container {height: 52px; display: table-cell; vertical-align: middle}
+#remote_link_buttons .remote_branded_button .branded_buy_button {width: 130px; height: 20px; margin-bottom: 3px; padding-top: 5px; display: block; background: transparent url('/images/ppp/branded_buy_button.png?1381527416') no-repeat}
+#remote_link_buttons .remote_branded_button .branded_buy_button:hover {text-decoration: none; background-position: 0 -26px}
+#remote_link_buttons .remote_branded_button .branded_buy_button:active {text-decoration: none; background-position: 0 -52px; height: 19px; padding-top: 6px}
+#remote_link_buttons .remote_branded_button .branded_buy_button .barnes_noble, #remote_link_buttons .remote_branded_button .branded_buy_button .amazon {height: 15px; margin-left: auto; margin-right: auto}
+#remote_link_buttons .remote_branded_button .branded_buy_button .barnes_noble {width: 99px; background: transparent url('/images/ppp/branded_buy_button_barnes_noble.png?1381527416') no-repeat}
+#remote_link_buttons .remote_branded_button .branded_buy_button .amazon {width: 62px; background: transparent url('/images/ppp/branded_buy_button_amazon.png?1381527416') no-repeat}
+/* see buy_this.rb -- the buttons are copied between missing pages and ther they need other positioning */ .page_missing_explanation_inner #remote_link_buttons {float: right}
+
+
+/* app/views/embeds/embed_lightbox.css @ 1381527383 */
+.embed_lightbox {position: absolute; top: 30%; left: 50%; margin-top: -100px; margin-left: -165px}
+.embed_lightbox.container {text-align: left; background: white; width: 300px; border: 15px solid #555555; padding: 15px; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px}
+.embed_lightbox .close {float: right; font-size: 11px}
+.embed_lightbox h1 {margin-bottom: 20px}
+
+
+/* :class_inlines, 'app/views', ... @ 1381527383 */
+/* app/views/shared/lists/document_list.css @ 1381527383 */
+.document_list {position: relative}
+.document_list .list_content {position: relative; overflow: hidden; margin: 0 45px}
+.document_list .sliding_content {font-size: 0; white-space: nowrap; position: absolute; top: 0; left: 0}
+.document_list .paddle .sprite {position: absolute; top: 140px}
+.document_list .module_edge_right, .document_list .module_edge_left {-webkit-transition: opacity 0.25s ease-in-out; -moz-transition: opacity 0.25s ease-in-out; transition: opacity 0.25s ease-in-out; opacity: 1.0; width: 23px; height: 341px; position: absolute; z-index: 3}
+.document_list .module_edge_right {background: url('/images/newhome/module-edge.png?1381527416'); top: 0; right: 45px}
+.document_list .module_edge_left {background: url('/images/newhome/module-edge-left.png?1381527416'); top: 0; left: 45px}
+.document_list.on_first_page .module_edge_left {opacity: 0}
+.ie8 .document_list.on_first_page .module_edge_left, .ie7 .document_list.on_first_page .module_edge_left, .ie6 .document_list.on_first_page .module_edge_left {display: none}
+.document_list.on_last_page .module_edge_right {opacity: 0}
+.ie8 .document_list.on_last_page .module_edge_right, .ie7 .document_list.on_last_page .module_edge_right, .ie6 .document_list.on_last_page .module_edge_right {display: none}
+.document_list .list_title {font-family: Proxima Nova, sans-serif; font-weight: 400; font-size: 24px; color: #103948; margin: 0 45px 20px 45px}
+.document_list .list_title a {color: #103948; font-weight: 400}
+.document_list .list_title .sub_title {background: #8BA2AC; color: white; padding: 2px 10px; font-size: 12px; border-radius: 1px; margin-left: 10px; position: relative; top: -2px}
+
+
+/* app/views/shared/documents/list_item.css @ 1381527383 */
+.autogen_class_views_shared_documents_list_item {display: inline-block; zoom: 1; *display: inline; width: 185px; height: 348px; white-space: normal; vertical-align: top; font-size: 13px; margin-right: 32px; text-align: left}
+.autogen_class_views_shared_documents_list_item .document_cell .flag {position: absolute; color: white; font-size: 9px; font-weight: bold; letter-spacing: 1px; display: none; border-radius: 0; bottom: -20px; height: 20px; line-height: 21px; left: 0; right: 0; text-align: center}
+.autogen_class_views_shared_documents_list_item .document_cell .flag.sample {background: #C1C1BE}
+.autogen_class_views_shared_documents_list_item .document_cell .flag.purchase_only {background: #006C96}
+.autogen_class_views_shared_documents_list_item .document_cell.has_flag .cell_data, .autogen_class_views_shared_documents_list_item .document_cell.has_flag .content {margin-top: 30px}
+.autogen_class_views_shared_documents_list_item .document_cell.has_flag.is_purchase .purchase_only {display: block}
+.autogen_class_views_shared_documents_list_item .document_cell.has_flag.is_sample .sample {display: block}
+.autogen_class_views_shared_documents_list_item .document_cell.last_cell {margin-right: 0px}
+.autogen_class_views_shared_documents_list_item .document_cell.popup_open .thumb .overlay {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=50)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50); opacity: 0.5}
+.autogen_class_views_shared_documents_list_item .document_cell.popup_open .thumb .overlay .sprite {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=50)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50); opacity: 0.5}
+.autogen_class_views_shared_documents_list_item .document_cell .thumb {border: 1px solid #e6e6e6; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5); position: relative; border-radius: 2px; background-position: 50% 50%; background-repeat: no-repeat; background-color: #E6E8E9; background-size: cover; height: 250px; margin-bottom: 10px}
+.autogen_class_views_shared_documents_list_item .document_cell .thumb:hover .overlay {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=50)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50); opacity: 0.5}
+.autogen_class_views_shared_documents_list_item .document_cell .thumb:hover .overlay .sprite {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=50)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50); opacity: 0.5}
+.autogen_class_views_shared_documents_list_item .document_cell .thumb .overlay {-webkit-transition: opacity 0.1s ease-in-out; -moz-transition: opacity 0.1s ease-in-out; transition: opacity 0.1s ease-in-out; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0); opacity: 0; position: absolute; top: 0; right: 0; bottom: 0; left: 0; border-radius: 2px; background: black}
+.autogen_class_views_shared_documents_list_item .document_cell .thumb .overlay .sprite {position: absolute; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=0)"; filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0); opacity: 0; left: 50%; top: 50%; margin-left: -23px; margin-top: -18px}
+.autogen_class_views_shared_documents_list_item .document_cell .document_title {font-size: 14px; line-height: 18px; overflow: hidden; max-height: 36px}
+.autogen_class_views_shared_documents_list_item .document_cell .document_title a {color: #022f40}
+.autogen_class_views_shared_documents_list_item .document_cell .document_author {white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 12px; line-height: 18px}
+
+
+/* app/views/embeds/content.css @ 1381527383 */
+.autogen_class_views_embeds_content #content_embed_container {z-index: 1}
+.autogen_class_views_embeds_content #content_embed_container #branding {width: 100%; height: 35px; text-align: left}
+.autogen_class_views_embeds_content #content_embed_container #branding img {margin-top: 5px; margin-left: 12px}
+.autogen_class_views_embeds_content #content_embed_container #document_content {overflow: hidden; position: absolute; top: 0; bottom: 30px; left: 0; right: 0; border: 1px solid #e5e5e5; border-bottom: none; /* seriously, fuck IE6. */ _width: 100%; _height: 100%}
+.autogen_class_views_embeds_content #content_embed_container #document_content iframe {padding: 0; margin: 0; position: absolute; top: 0; bottom: 0; left: 0; right: 0; width: 100%; height: 100%; min-width: 340px}
+.autogen_class_views_embeds_content #content_embed_container #overlay_prev, .autogen_class_views_embeds_content #content_embed_container #overlay_next {position: fixed; height: 100%; width: 25%; cursor: pointer}
+.autogen_class_views_embeds_content #content_embed_container #overlay_prev .arrow, .autogen_class_views_embeds_content #content_embed_container #overlay_next .arrow {position: fixed; bottom: 48%; width: 62px; height: 60px; cursor: pointer}
+.autogen_class_views_embeds_content #content_embed_container #overlay_prev:hover .arrow, .autogen_class_views_embeds_content #content_embed_container #overlay_next:hover .arrow {background-position: 0 -60px}
+.autogen_class_views_embeds_content #content_embed_container #overlay_prev:active .arrow, .autogen_class_views_embeds_content #content_embed_container #overlay_next:active .arrow {background-position: 0 -120px}
+.autogen_class_views_embeds_content #content_embed_container #overlay_prev.inactive, .autogen_class_views_embeds_content #content_embed_container #overlay_next.inactive {cursor: default}
+.autogen_class_views_embeds_content #content_embed_container #overlay_prev.inactive .arrow, .autogen_class_views_embeds_content #content_embed_container #overlay_next.inactive .arrow {background-position: 0 -180px; cursor: default}
+.autogen_class_views_embeds_content #content_embed_container #overlay_prev {left: 0}
+.autogen_class_views_embeds_content #content_embed_container #overlay_prev .arrow {left: 0; background: transparent url('/images/embeds/EmbedOverlayPrev.png?1381527416') no-repeat top left}
+.autogen_class_views_embeds_content #content_embed_container #overlay_next {right: 0}
+.autogen_class_views_embeds_content #content_embed_container #overlay_next .arrow {right: 0; background: transparent url('/images/embeds/EmbedOverlayNext.png?1381527416') no-repeat top left}
+.autogen_class_views_embeds_content #toolbar {position: absolute; bottom: 0; left: 0; right: 0; height: 29px; min-width: 340px; padding: 0; overflow: hidden; z-index: 5000; background: #f3f1ea; border: 1px solid #e5e5e5; -webkit-box-shadow: inset 0px 0px 4px -1px #d3d5d6; -moz-box-shadow: inset 0px 0px 4px -1px #d3d5d6; box-shadow: inset 0px 0px 4px -1px #d3d5d6; text-align: center; /* So we can center the pagination container */ }
+.autogen_class_views_embeds_content #toolbar.mobile_thumbnail {position: static; white-space: nowrap; overflow: hidden; text-align: left}
+.autogen_class_views_embeds_content #toolbar.mobile_thumbnail .title_text {color: #464b4e; font-family: Helvetica, Arial, sans-serif; font-size: 22px; line-height: 36px; margin-left: 87px}
+.autogen_class_views_embeds_content #toolbar .padding_wrapper {padding: 0 200px}
+.autogen_class_views_embeds_content #toolbar a.logo {display: block; float: left; width: 82px; height: 25px; overflow: hidden; margin: 2px 15px 0 1px}
+.autogen_class_views_embeds_content #toolbar a.logo.collapsed {margin-right: 0px}
+.autogen_class_views_embeds_content #toolbar a.logo div {top: 0; width: 82px; height: 25px; background: transparent url('/images/embeds/EmbedButtonScribdLogo.png?1381527416') no-repeat top left}
+.autogen_class_views_embeds_content #toolbar .fullscreen {padding-left: 31px}
+.autogen_class_views_embeds_content #toolbar .fullscreen div {width: 30px; background: transparent url('/images/embeds/EmbedButtonFullscreen.png?1381527416') no-repeat top left}
+.autogen_class_views_embeds_content #toolbar .exit_fullscreen {padding-left: 31px}
+.autogen_class_views_embeds_content #toolbar .exit_fullscreen div {width: 30px; background: transparent url('/images/embeds/EmbedButtonExitFullscreen.png?1381527416') no-repeat top left}
+.autogen_class_views_embeds_content #toolbar .download, .autogen_class_views_embeds_content #toolbar .share, .autogen_class_views_embeds_content #toolbar .embed_code, .autogen_class_views_embeds_content #toolbar .buy_button, .autogen_class_views_embeds_content #toolbar .barnes_noble_buy_button, .autogen_class_views_embeds_content #toolbar .amazon_buy_button {margin-left: 0; margin-right: 24px; padding-left: 31px}
+.autogen_class_views_embeds_content #toolbar .download div, .autogen_class_views_embeds_content #toolbar .share div, .autogen_class_views_embeds_content #toolbar .embed_code div, .autogen_class_views_embeds_content #toolbar .buy_button div, .autogen_class_views_embeds_content #toolbar .barnes_noble_buy_button div, .autogen_class_views_embeds_content #toolbar .amazon_buy_button div {width: 30px}
+.autogen_class_views_embeds_content #toolbar .download span, .autogen_class_views_embeds_content #toolbar .share span, .autogen_class_views_embeds_content #toolbar .embed_code span, .autogen_class_views_embeds_content #toolbar .buy_button span, .autogen_class_views_embeds_content #toolbar .barnes_noble_buy_button span, .autogen_class_views_embeds_content #toolbar .amazon_buy_button span {line-height: 28px}
+.autogen_class_views_embeds_content #toolbar .download div {background: transparent url('/images/embeds/EmbedButtonDownload.png?1381527416') no-repeat top left}
+.autogen_class_views_embeds_content #toolbar .share div {background: transparent url('/images/embeds/EmbedButtonShare.png?1381527416') no-repeat top left}
+.autogen_class_views_embeds_content #toolbar .embed_code div {background: transparent url('/images/embeds/EmbedButtonEmbed.png?1381527416') no-repeat top left}
+.autogen_class_views_embeds_content #toolbar .buy_button {padding-left: 60px}
+.autogen_class_views_embeds_content #toolbar .buy_button div {background: transparent url('/images/embeds/EmbedButtonBuy.png?1381527416') no-repeat top left; width: 59px}
+.autogen_class_views_embeds_content #toolbar .barnes_noble_buy_button div {background: transparent url('/images/embeds/EmbedButtonBN.png?1381527416') no-repeat top left}
+.autogen_class_views_embeds_content #toolbar .amazon_buy_button div {background: transparent url('/images/embeds/EmbedButtonAmazon.png?1381527416') no-repeat top left}
+.autogen_class_views_embeds_content #toolbar #buttons_left .custom_buy_label {font-size: 10px; line-height: 11px; text-align: right; padding: 3px 5px 0 0}
+.autogen_class_views_embeds_content #toolbar #buttons_left .custom_buy_buttons .expandable_button {display: inline-block; zoom: 1; *display: inline; margin-right: 3px}
+.autogen_class_views_embeds_content #toolbar #buttons_left .custom_buy_buttons .expandable_button:last-child {margin-right: 24px}
+.autogen_class_views_embeds_content #toolbar #buttons_left .custom_buy_buttons .expandable_button:last-child.collapsed {margin-right: 2px}
+.autogen_class_views_embeds_content #toolbar .zoom_in, .autogen_class_views_embeds_content #toolbar .zoom_out {padding-left: 31px}
+.autogen_class_views_embeds_content #toolbar .zoom_in div, .autogen_class_views_embeds_content #toolbar .zoom_out div {width: 30px}
+.autogen_class_views_embeds_content #toolbar .zoom_in div {background: transparent url('/images/embeds/EmbedButtonZoomIn.png?1381527416') no-repeat top left}
+.autogen_class_views_embeds_content #toolbar .zoom_out div {background: transparent url('/images/embeds/EmbedButtonZoomOut.png?1381527416') no-repeat top left}
+.autogen_class_views_embeds_content #toolbar .yellow {padding-left: 8px}
+.autogen_class_views_embeds_content #toolbar .yellow div {width: 5px; background: transparent url('/images/embeds/ControlsExtraYellowLeft.png?1381527416') no-repeat top left}
+.autogen_class_views_embeds_content #toolbar .expandable_button {font-size: 12px; font-family: Helvetica, Arial, sans-serif; font-weight: bold; color: #464b4e; display: block; height: 21px; position: relative; /* FUCK YOU IE6 */ _width: 0px; /* These are the divs that actually show the background */ }
+.autogen_class_views_embeds_content #toolbar .expandable_button.exit_fullscreen {_width: 80px}
+.autogen_class_views_embeds_content #toolbar .expandable_button.collapsed {margin-right: 2px}
+.autogen_class_views_embeds_content #toolbar .expandable_button.collapsed span {display: none}
+.autogen_class_views_embeds_content #toolbar .expandable_button span {position: relative}
+.autogen_class_views_embeds_content #toolbar .expandable_button div {position: absolute; left: 0; top: 2px; height: 25px}
+.autogen_class_views_embeds_content #toolbar .expandable_button:hover {text-decoration: none; background-position: 0 -25px}
+.autogen_class_views_embeds_content #toolbar .expandable_button:hover div {background-position: 0 -25px}
+.autogen_class_views_embeds_content #toolbar .expandable_button:active {background-position: right -50px; text-decoration: none}
+.autogen_class_views_embeds_content #toolbar .expandable_button:active span {top: 1px}
+.autogen_class_views_embeds_content #toolbar .expandable_button:active img {margin-top: 1px}
+.autogen_class_views_embeds_content #toolbar .expandable_button:active div {background-position: 0 -50px}
+.autogen_class_views_embeds_content #toolbar .expandable_button.yellow {line-height: 14px; font-size: 14px; background-image: url('/images/embeds/ControlsExtraYellow.png?1381527416')}
+.autogen_class_views_embeds_content #toolbar .expandable_button.yellow img {float: left}
+.autogen_class_views_embeds_content #toolbar .expandable_button.yellow.collapsed {padding-right: 8px}
+.autogen_class_views_embeds_content #toolbar .expandable_button.yellow.collapsed span {display: inline}
+.autogen_class_views_embeds_content #toolbar .expandable_button.yellow span {margin-left: 6px; color: white; font-weight: bold; text-shadow: 1px 1px 1px #b38400}
+.autogen_class_views_embeds_content #toolbar #buttons_left, .autogen_class_views_embeds_content #toolbar #buttons_right {position: absolute; top: 0; list-style-type: none}
+.autogen_class_views_embeds_content #toolbar #buttons_left li, .autogen_class_views_embeds_content #toolbar #buttons_right li {margin: 0; padding: 0; font-size: 14px}
+.autogen_class_views_embeds_content #toolbar #buttons_left li.divider, .autogen_class_views_embeds_content #toolbar #buttons_right li.divider {width: 0px; height: 21px; border-left: 1px solid #d3d5d6; margin: 3px 5px}
+.autogen_class_views_embeds_content #toolbar #buttons_left {left: 0}
+.autogen_class_views_embeds_content #toolbar #buttons_left li {float: left}
+.autogen_class_views_embeds_content #toolbar #buttons_right {right: 0}
+.autogen_class_views_embeds_content #toolbar #buttons_right li {float: right}
+.autogen_class_views_embeds_content #toolbar div#pagination_container {margin: 0 auto; width: 110px; height: 29px; background-color: #e5e2d6; -webkit-box-shadow: inset 0px 0px 4px -1px #d3d5d6; -moz-box-shadow: inset 0px 0px 4px -1px #d3d5d6; box-shadow: inset 0px 0px 4px -1px #d3d5d6; overflow: hidden; text-align: center; vertical-align: middle}
+.autogen_class_views_embeds_content #toolbar div#pagination_container.collapsed {width: 58px}
+.autogen_class_views_embeds_content #toolbar div#pagination_container.collapsed .first_page_arrow, .autogen_class_views_embeds_content #toolbar div#pagination_container.collapsed .last_page_arrow {display: none}
+.autogen_class_views_embeds_content #toolbar div#pagination_container a {display: inline-block; zoom: 1; *display: inline}
+.autogen_class_views_embeds_content #toolbar div#pagination_container .left_arrow, .autogen_class_views_embeds_content #toolbar div#pagination_container .right_arrow {width: 24px; height: 25px; margin: 2px 1px 3px}
+.autogen_class_views_embeds_content #toolbar div#pagination_container .left_arrow:hover, .autogen_class_views_embeds_content #toolbar div#pagination_container .right_arrow:hover {background-position: 0 -25px; text-decoration: none}
+.autogen_class_views_embeds_content #toolbar div#pagination_container .left_arrow:active, .autogen_class_views_embeds_content #toolbar div#pagination_container .right_arrow:active {background-position: 0 -50px; text-decoration: none}
+.autogen_class_views_embeds_content #toolbar div#pagination_container .left_arrow.inactive, .autogen_class_views_embeds_content #toolbar div#pagination_container .right_arrow.inactive {background-position: 0 -75px; cursor: default}
+.autogen_class_views_embeds_content #toolbar div#pagination_container .first_page_arrow, .autogen_class_views_embeds_content #toolbar div#pagination_container .last_page_arrow {width: 22px; height: 20px; margin: 5px 1px}
+.autogen_class_views_embeds_content #toolbar div#pagination_container .first_page_arrow:hover, .autogen_class_views_embeds_content #toolbar div#pagination_container .last_page_arrow:hover {background-position: 0 -20px; text-decoration: none}
+.autogen_class_views_embeds_content #toolbar div#pagination_container .first_page_arrow:active, .autogen_class_views_embeds_content #toolbar div#pagination_container .last_page_arrow:active {background-position: 0 -40px; text-decoration: none}
+.autogen_class_views_embeds_content #toolbar div#pagination_container .first_page_arrow.inactive, .autogen_class_views_embeds_content #toolbar div#pagination_container .last_page_arrow.inactive {background-position: 0 -60px; cursor: default}
+.autogen_class_views_embeds_content #toolbar div#pagination_container .left_arrow {background: url('/images/embeds/EmbedButtonPrevPage.png?1381527416') no-repeat top left}
+.autogen_class_views_embeds_content #toolbar div#pagination_container .right_arrow {background: url('/images/embeds/EmbedButtonNextPage.png?1381527416') no-repeat top left}
+.autogen_class_views_embeds_content #toolbar div#pagination_container .first_page_arrow {background: url('/images/embeds/EmbedButtonFirstPage.png?1381527416') no-repeat top left}
+.autogen_class_views_embeds_content #toolbar div#pagination_container .last_page_arrow {background: url('/images/embeds/EmbedButtonLastPage.png?1381527416') no-repeat top left}
+.autogen_class_views_embeds_content #toolbar li#pages {margin-right: 5px}
+.autogen_class_views_embeds_content #toolbar li#pages form {display: inline-block; zoom: 1; *display: inline}
+.autogen_class_views_embeds_content #toolbar li#pages form input {width: 25px; height: 21px; margin-top: 3px; line-height: 21px; border: 1px solid #d3d5d6; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; -webkit-box-shadow: inset 0px 1px 2px -1px #d3d5d6; -moz-box-shadow: inset 0px 1px 2px -1px #d3d5d6; box-shadow: inset 0px 1px 2px -1px #d3d5d6; outline: none; background: #ffffff; font-size: 15px; font-family: Helvetica; color: #464b4e; text-align: center}
+.autogen_class_views_embeds_content #toolbar li#pages.collapsed .of, .autogen_class_views_embeds_content #toolbar li#pages.collapsed .total {display: none}
+.autogen_class_views_embeds_content #toolbar li#pages .of, .autogen_class_views_embeds_content #toolbar li#pages .total {color: #464b4e; height: 27px; line-height: 27px; font-family: Georgia}
+.autogen_class_views_embeds_content #toolbar li#pages .of {font-size: 12px; margin-left: 6px; margin-right: 4px}
+.autogen_class_views_embeds_content #toolbar li#pages .total {font-size: 15px; margin: 0}
+
+
+/* app/views/embeds/content_inner.css @ 1381527383 */
+.autogen_class_views_embeds_content_inner {/* */ text-align: center; height: 100%}
+.autogen_class_views_embeds_content_inner .outer_page {border: 1px solid #aaaaaa; margin: 15px auto 15px auto; /* Crazy Safari bug. We need this to prevent scrollbars from showing up due to phantom elements extending beyond the width of #document_content */ overflow: hidden}
+.autogen_class_views_embeds_content_inner #document_container {border: 0; padding: 0; margin: 0; width: 100%; height: 100%}
+.autogen_class_views_embeds_content_inner #document_container tr td {vertical-align: middle}
+.autogen_class_views_embeds_content_inner .between_page_ads {display: none !important}
+.autogen_class_views_embeds_content_inner #left_hotspot, .autogen_class_views_embeds_content_inner #right_hotspot {z-index: 1; cursor: pointer; width: 25%; height: 100%; position: fixed; top: 0}
+.autogen_class_views_embeds_content_inner #left_hotspot {left: 0}
+.autogen_class_views_embeds_content_inner #right_hotspot {right: 0}
+
+
+/* app/views/embeds/download.css @ 1381527383 */
+.autogen_class_views_embeds_download .container {height: 40px}
+
+
+/* app/views/embeds/embed_code.css @ 1381527383 */
+#embed_code_lb h2 {color: #464b4e; font-family: Georgia; font-weight: normal; margin-bottom: 5px}
+#embed_code_lb .embed_code_container textarea {width: 300px; height: 75px; display: block; clear: both; margin-bottom: 12px}
+#embed_code_lb hr {margin: 10px 0; background: transparent; border-bottom: 1px dashed #d3d5d6}
+#embed_code_lb .doc_url_container input {width: 222px; height: 20px}
+#embed_code_lb .copy_button_container {float: right; left: -4px; position: relative; width: 72px; height: 27px}
+#embed_code_lb .copy_button {background: url('/images/embeds/EmbedButtonCopy.png?1381527416'); width: auto}
+#embed_code_lb .copy_button.hover {background-position: 0 -27px}
+#embed_code_lb .copy_button.active {background-position: 0 -81px}
+
+
+/* app/views/embeds/embed_code.rb:13 @ 1381527383 */
+button.standard_submit.copy {width: 147px; float: left}
+
+
+/* app/views/embeds/_recommendations.css @ 1381527383 */
+.recommendations_container {position: absolute; bottom: 29px; left: 0; right: 0; padding: 0; z-index: 5000; min-height: 29px}
+.recommendations_container.stick_to_top {bottom: 31px; overflow-y: scroll}
+.recommendations_container .recommendations_page {display: none; background-color: white; padding-top: 10px; text-align: left}
+.recommendations_container .recommendations_page.hidden {display: none}
+.recommendations_container .recommendations_page .list_title {font-size: 14px; margin: 0 0 10px 5px; float: left; font-family: Proxima Nova, sans-serif; color: #8ea3ab}
+.recommendations_container .recommendations_page .list_title a {font-weight: normal; padding: 0}
+.recommendations_container .recommendations_page .list_content {margin-left: 0; margin-right: 0}
+.recommendations_container .recommendations_page .document_cell.small {width: 120px}
+.recommendations_container .recommendations_page .document_title {font-family: "Proxima Nova, sans-serif"; font-size: 14px}
+.recommendations_container .recommendations_page .document_author {font-family: "Proxima Nova, sans-serif"; font-size: 12px}
+.recommendations_container .recommendations_page .document_list {margin-left: 5px}
+.recommendations_container .recommendations_page .logo_embed {margin: 10px 0 30px 5px}
+.recommendations_container .recommendations_page .pagination {float: right; font-size: 13px}
+.recommendations_container .recommendations_page .on_last_page .next {pointer-events: none; color: gray}
+.recommendations_container .recommendations_page .on_first_page .previous {pointer-events: none; color: gray}
+.recommendations_container .recommendations_page .small_image {width: 120px; height: 164px}
+.recommendations_container .recommendations_nag {text-align: center; font-size: 12px; cursor: pointer; background: #3E7793}
+.recommendations_container .recommendations_nag:hover {background: #4d92b4}
+.recommendations_container .recommendations_nag div {height: 28px; overflow: hidden; text-overflow: ellipsis; width: 70%; margin: 0 auto}
+.recommendations_container .recommendations_nag.stick_to_top .open_recommendations {display: inline-block; zoom: 1; *display: inline}
+.recommendations_container .recommendations_nag.stick_to_top .open_recommendations:tilted_right {padding-left: 60px}
+.recommendations_container .recommendations_nag.stick_to_top .closed_recommendations {display: none}
+.recommendations_container .recommendations_nag .open_recommendations {display: none}
+.recommendations_container .recommendations_nag .closed_recommendations {display: inline-block; zoom: 1; *display: inline}
+.recommendations_container .recommendations_nag a {color: #FFFFFF; line-height: 28px}
+.recommendations_container .recommendations_nag .sprite.close.white {position: absolute; right: 25px; top: 7px}
+.recommendations_container .recommendations_nag .right {margin-right: 45px}
+.recommendations_container .recommendations_nag .list_content {min-height: 348px}
+
+
+/* app/views/embeds/share.css @ 1381527383 */
+.social_button {display: inline-block; zoom: 1; *display: inline}
+.social_button.fb_sb {position: relative; top: -2px; overflow: hidden}
+
+
+/* app/views/embeds/unavailable.css @ 1381527383 */
+.autogen_class_views_embeds_unavailable .embeds_error .lightbox {width: 400px; min-width: 300px; margin-left: auto; margin-right: auto; position: static; margin-top: 50px; text-align: center}
+.autogen_class_views_embeds_unavailable .embeds_error .lightbox h1 {font-family: Georgia, Palatino, Palatino Linotype, Times, Times New Roman, serif; font-size: 18px; color: #565b63; text-align: center; text-shadow: 1px 1px 1px white}
+.autogen_class_views_embeds_unavailable .embeds_error .lightbox h2 {font-size: 14px; text-align: center; text-shadow: 1px 1px 1px white}
+.autogen_class_views_embeds_unavailable .embeds_error .lightbox hr {border-top: 1px dotted #565b63; color: #565b63; background-color: #fff; height: 1px; width: 90%}

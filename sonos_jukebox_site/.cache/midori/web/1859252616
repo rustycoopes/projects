@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Wall Box SONOS Controller - Welcome and introduction to my Raspberry Pi SONOS project</title>
+<meta name='description' content='Overview of the site explaining how I converted an old juke box (wall box) into a SONOS controller using a Raspberry Pi' />
+<meta name='keywords' content='SONOS, UPnP, &quot;Raspberry Pi&quot;, RPi, Controller, jukebox, wallbox, &quot;wall box&quot;' />
+<meta property='og:site_name' content='Wall Box SONOS Controller' />
+<meta property='og:title' content='Welcome and introduction to my Raspberry Pi SONOS project' />
+<meta property='og:description' content='Overview of the site explaining how I converted an old juke box (wall box) into a SONOS controller using a Raspberry Pi' />
+<meta property='og:image' content='http://wallbox.weebly.com/uploads/1/9/5/3/19536949/1366624888.jpg' />
+<meta property='og:url' content='http://wallbox.weebly.com/' />
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<meta name="google-site-verification" content="GsEQ0Yey2E2l_5DolOHvKOQcjxv_wbSz6yIsmdBOIQ8" /><link rel="stylesheet" href="//cdn2.editmysite.com/css/sites.css?buildTime=1367020905" type="text/css" /><link rel='stylesheet' type='text/css' href='http://cdn1.editmysite.com/editor/libraries/fancybox/fancybox.css?1367020905' />
+<link rel='stylesheet' href='//cdn1.editmysite.com/editor/images/common/common-v2.css?buildTime=1367020905' type='text/css' />
+<link rel='stylesheet' type='text/css' href='/files/main_style.css?1367219242' title='wsite-theme-css' />
+<style type='text/css'>
+.wsite-elements div.paragraph, .wsite-elements p, .wsite-elements .product-block .product-title, .wsite-elements .product-description, .wsite-elements .wsite-form-field label, .wsite-elements .wsite-form-field label, #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {}
+#wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {}
+.wsite-elements h2, .wsite-elements .product-long .product-title, .wsite-elements .product-large .product-title, .wsite-elements .product-small .product-title, #wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {}
+#wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {}
+#wsite-title {}
+</style>
+<script type='text/javascript'><!--
+var STATIC_BASE = 'http://cdn1.editmysite.com/';
+var STYLE_PREFIX = 'wsite';
+//-->
+</script>
+<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
+<script type='text/javascript' src='http://cdn1.editmysite.com/editor/libraries/jquery_effects.js?1367020905'></script>
+<script type='text/javascript' src='http://cdn1.editmysite.com/editor/libraries/jquery.animate.js?1367020905'></script>
+<script type='text/javascript' src='http://cdn1.editmysite.com/editor/libraries/fancybox/fancybox.min.js?1367020905'></script>
+<script type='text/javascript' src='http://cdn1.editmysite.com/editor/images/common/utilities-jq.js?1367020905'></script>
+<script type='text/javascript' src='http://cdn1.editmysite.com/editor/libraries/flyout_menus_jq.js?1367020905'></script>
+<script type='text/javascript'><!--
+(function(jQuery){
+function initFlyouts(){initPublishedFlyoutMenus([{"id":"140411987169741940","title":"Home","url":"index.html"},{"id":"900326874209607578","title":"Wall boxes","url":"wall-boxes.html"},{"id":"629555251774409789","title":"1. Interfacing the RPi","url":"1-interfacing-the-rpi.html"},{"id":"757354211481056056","title":"2. Decoding pulses","url":"2-decoding-pulses.html"},{"id":"617202305132732265","title":"3. SONOS API","url":"3-sonos-api.html"},{"id":"163066697256165500","title":"Resources","url":"resources.html"},{"id":"265555308721549410","title":"Discussion","url":"discussion.html"}],'140411987169741940',"<li class='wsite-nav-more'><a href='#'>more...<\/a><\/li>",'active',false)}
+if (jQuery) {
+if (jQuery.browser.msie) window.onload = initFlyouts;
+else jQuery(initFlyouts)
+}else{
+if (Prototype.Browser.IE) window.onload = initFlyouts;
+else document.observe('dom:loaded', initFlyouts);
+}
+})(window._W && _W.jQuery)
+//-->
+</script>
+</head>
+<body class='wsite-theme-light no-header-page wsite-page-index'>
+<div class="header-wrap">
+	<div class="container">
+		<table id="header">
+			<tr>
+				<td id="logo"><span class='wsite-logo'><a href='/'><span id="wsite-title">Wall Box SONOS Controller</span></a></span></td>
+				<td id="header-right">
+					<table>
+						<tr>
+							<td class="phone-number"><span class='wsite-text'>Contact</span></td>
+							<td class="social"><div style="text-align:left;"><div style="height:0px;overflow:hidden"></div>
+<span class="wsite-social wsite-social-default"><a class='wsite-social-item wsite-social-twitter' href='http://twitter.com/everycolour' target='_blank'><span class='wsite-social-item-inner'></span></a><a class='wsite-social-item wsite-social-linkedin' href='http://www.linkedin.com/pub/steve-devlin/3/533/130' target='_blank'><span class='wsite-social-item-inner'></span></a></span>
+<div style="height:0px;overflow:hidden"></div></div></td>
+						</tr>
+					</table>
+					<div class="search"></div>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+<div class="container">
+	<div id="navigation">
+		<ul><li id='active'><a href='/index.html'>Home</a></li><li id='pg900326874209607578'><a href='/wall-boxes.html'>Wall boxes</a></li><li id='pg629555251774409789'><a href='/1-interfacing-the-rpi.html'>1. Interfacing the RPi</a></li><li id='pg757354211481056056'><a href='/2-decoding-pulses.html'>2. Decoding pulses</a></li><li id='pg617202305132732265'><a href='/3-sonos-api.html'>3. SONOS API</a></li><li id='pg163066697256165500'><a href='/resources.html'>Resources</a></li><li id='pg265555308721549410'><a href='/discussion.html'>Discussion</a></li></ul>
+		<div class="clear"></div>
+	</div>
+	<div id="main">
+		<div id="banner">
+			<div class="wsite-header"></div>
+		</div>
+		<div id="content">
+			<div id='wsite-content' class='wsite-elements wsite-not-footer'>
+<div><div class="wsite-multicol"><div class='wsite-multicol-table-wrap' style='margin:0 -15px'>
+<table class='wsite-multicol-table'>
+<tbody class='wsite-multicol-tbody'>
+<tr class='wsite-multicol-tr'>
+<td class='wsite-multicol-col' style='width:39.55223880597%;padding:0 15px'>
+
+<div><div class="wsite-image wsite-image-border-border-width:0 " style="padding-top:10px;padding-bottom:10px;margin-left:0;margin-right:10px;text-align:left">
+<a>
+<img src="/uploads/1/9/5/3/19536949/1366624888.jpg" alt="Picture" style="width:auto;max-width:100%" />
+</a>
+<div style="display:block;font-size:90%"></div>
+</div></div>
+
+</td>
+<td class='wsite-multicol-col' style='width:60.44776119403%;padding:0 15px'>
+
+<div class="paragraph" style="text-align:left;">I used a Raspberry Pi to re-invent my old 1960&rsquo;s wall box as a controller for my wireless home media system (SONOS). &nbsp;It looks wonderful in my kitchen with its chrome and warm lights.&nbsp; Everyone loves dropping in a quarter, seeing the credits light up, and hearing it clunk and whirr as it selects a song.&nbsp;&nbsp;<br /><br />The RPi is housed inside the wall box and runs a program that polls the GPIO for pulses from the wallbox.&nbsp; It decodes the pulses into a song selection and using UPnP protocols over my home wi-fi, adds the song to the SONOS queue.&nbsp;&nbsp;<br /><br />This site explains how I did this and should tell you everything you need to know to build your own. &nbsp;I have gone into lots of detail into the design for those that are interested, however the final design is very simple, requiring only 4 components soldered onto a stripboard. The software I have written will work for all wall boxes with some minor tweaking. &nbsp;<br /></div>
+
+</td>
+</tr>
+</tbody>
+</table>
+</div></div></div>
+
+<div><div id="628119907461913572" align="left" style="width: 100%; overflow-y: hidden;" class="wcustomhtml"><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://wallbox.weebly.com" data-via="everycolour">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<br><iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwallbox.weebly.com&amp;send=false&amp;layout=standard&amp;width=450&amp;show_faces=false&amp;font&amp;colorscheme=light&amp;action=like&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:35px;" allowTransparency="true"></iframe></div>
+
+
+
+</div></div>
+
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div id="footer">
+		
+
+<style type='text/css'>
+<!--
+
+#weebly-footer {
+	position: relative !important;
+	}
+
+#weebly-footer a {
+	position: relative !important;
+	z-index: 2 !important;
+	cursor: pointer;
+	}
+
+#weebly-footer-dynamic {
+	position: relative !important;
+	display: inline-block !important;
+	width: 72px !important;
+	height: 1px !important;
+	vertical-align: middle !important;
+	text-decoration: none !important;
+	border: 0 !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	}
+
+.weebly-footer-button {
+	position: absolute;
+	top: -14px;
+	left: 0;
+	display: block;
+	_display: inline-block;
+	width: 72px;
+	height: 29px;
+	background: url("http://static-cdn.weebly.com/images/weebly-footer-asset.png") no-repeat left top;
+	_background: url(data:image/gif;base64,AAAA);
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://static-cdn.weebly.com/images/weebly-footer.png', sizingMethod='crop');
+	}
+
+.weebly-footer-hover .weebly-footer-button {
+	background: url("http://static-cdn.weebly.com/images/weebly-footer-asset.png") no-repeat -79px top;
+	_background: url(data:image/gif;base64,AAAA);
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://static-cdn.weebly.com/images/weebly-footer-active.png', sizingMethod='crop');
+	}
+
+.weebly-footer-button-text {
+	display: none;
+	}
+
+#weebly-footer-message {
+	display: none;
+	position: absolute;
+	top: -86px;
+	left: 1px;
+	width: 395px;
+	height: 98px;
+	_background: url(data:image/gif;base64,AAAA);
+	}
+
+.weebly-footer-dynamic-hover #weebly-footer-message {
+	display: block;
+	}
+
+.weebly-footer-right #weebly-footer-message {
+	left: -310px;
+	}
+
+.weebly-footer-message-content {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 59px;
+	background: url("http://static-cdn.weebly.com/images/weebly-footer-asset.png") no-repeat left -30px;
+	_background: none;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://static-cdn.weebly.com/images/weebly-footer-content.png', sizingMethod='crop');
+	}
+
+.weebly-footer-message-carrot {
+	position: relative;
+	left: 55px;
+	float: left;
+	display: block;
+	width: 12px;
+	height: 7px;
+	background: url("http://static-cdn.weebly.com/images/weebly-footer-asset.png") no-repeat -159px -1px;
+	_background: none;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://static-cdn.weebly.com/images/weebly-footer-carrot.png', sizingMethod='crop');
+	}
+
+.weebly-footer-right .weebly-footer-message-carrot {
+	left: 367px;
+	}
+
+-->
+</style>
+
+<span id="weebly-footer">
+  Create a <a target="_blank" href="http://www.weebly.com/">free website</a> with
+  <span id="weebly-footer-mark"></span>
+  <a id="weebly-footer-dynamic" target="_blank" href="http://www.weebly.com/?footer">
+	<span id="weebly-footer-button" class="weebly-footer-button">
+	  <span class="weebly-footer-button-text">Weebly</span>
+	</span>
+	<span id="weebly-footer-message">
+	  <span class="weebly-footer-message-content"></span>
+	  <span class="weebly-footer-message-carrot"></span>
+	</span>
+  </a>
+</span>
+
+<script type='text/javascript'>
+<!--
+
+(function(jQuery) {
+	if (jQuery) {
+		jQuery('#weebly-footer').on({
+			'mouseover': function(ev) { jQuery(this).addClass('weebly-footer-hover'); },
+			'mouseout': function(ev) { jQuery(this).removeClass('weebly-footer-hover'); }
+		});
+
+		jQuery('#weebly-footer-dynamic').on({
+			'mouseover': function(ev) {
+				var wf = jQuery('#weebly-footer'),
+				wfb = jQuery('#weebly-footer-button'),
+				wfm = jQuery('#weebly-footer-message'),
+				overflow = wfb.offset().left + wfm.width() > jQuery(window).width();
+
+				// Dynamically adjust where message is displayed
+				wf.toggleClass('weebly-footer-right', overflow);
+
+				jQuery(this).addClass('weebly-footer-dynamic-hover');
+			},
+			'mouseout': function(ev) {
+				jQuery(this).removeClass('weebly-footer-dynamic-hover')
+			}
+		});
+	}
+	else {
+		function positionWeeblyFooter() {
+			var e = $('weebly-footer-mark');
+			if (e.cumulativeOffset().left > document.viewport.getWidth()/2) {
+				e.up().addClassName('weebly-footer-right');
+			}else{
+				e.up().removeClassName('weebly-footer-right');
+			}
+		}
+
+		$('weebly-footer')
+			.observe('mouseover', function() {
+				$(this).addClassName('weebly-footer-hover');
+			})
+			.observe('mouseout', function() {
+				$(this).removeClassName('weebly-footer-hover');
+			});
+
+		$('weebly-footer-dynamic')
+			.observe('mouseover', function() {
+				$(this).addClassName('weebly-footer-dynamic-hover');
+				positionWeeblyFooter();
+			})
+			.observe('mouseout', function() {
+				$(this).removeClassName('weebly-footer-dynamic-hover');
+			});
+	}
+})(window._W && _W.jQuery);
+
+//-->
+</script>
+
+<script type='text/javascript'>
+<!--
+
+if (document.cookie.match(/(^|;)\s*is_mobile=1/)) {
+	var windowHref = window.location.href || '';
+	if (windowHref.indexOf('?') > -1) {
+		windowHref += '&';
+	} else {
+		windowHref += '?';
+	}
+	document.write(
+		"&nbsp;&nbsp;&nbsp;&nbsp;" +
+		"<a class='wsite-view-link-mobile' href='" + windowHref + "view=mobile'>Mobile Site</a>"
+	);
+}
+
+//-->
+</script>
+
+	</div>
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-40320076-1', 'weebly.com');
+  ga('send', 'pageview');
+
+</script>
+<script type="text/javascript">
+
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-7870337-1']);
+	_gaq.push(['_setDomainName', 'none']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+
+</script>
+
+<!-- Start Quantcast tag -->
+<script type="text/javascript">
+	_qoptions={
+		qacct:"p-0dYLvhSGGqUWo"
+	};
+</script>
+<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+<noscript>
+<img src="http://pixel.quantserve.com/pixel/p-0dYLvhSGGqUWo.gif" style="display: none;" border="0" height="1" width="1" alt="Quantcast"/>
+</noscript>
+<!-- End Quantcast tag -->
+
+<script>
+
+	(function(jQuery) {
+		try {
+			if (jQuery) {
+				jQuery('div.blog-social div.fb-like').attr('class', 'blog-social-item blog-fb-like');
+				jQuery('#commentArea iframe').css('min-height', '410px');
+				if ( jQuery('.product-button').length > 0 ) {
+					jQuery(document).ready(
+						function() {
+							jQuery.ajax({
+								type: "GET",
+								url: "/ajax/apps/stats.php?stat=sites.commerce.legacy.visit"
+							});
+						}
+					);
+					jQuery('.product-button').click(
+						function() {
+							var val = jQuery(this.form).serialize();
+							jQuery.ajax({
+								type: "POST",
+								url: "/ajax/apps/stats.php?stat=sites.commerce.legacy.addcart",
+								data: { values: val, host: window.location.host }
+							});
+						}
+					);
+				}
+			}
+			else {
+				// Prototype
+				$$('div.blog-social div.fb-like').each(function(div) {
+					div.className = 'blog-social-item blog-fb-like';
+				});
+				$$('#commentArea iframe').each(function(iframe) {
+					iframe.style.minHeight = '410px';
+				});
+			}
+		}
+		catch(ex) {}
+	})(window._W && _W.jQuery);
+
+</script>
+
+</body>
+</html>

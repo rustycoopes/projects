@@ -1,0 +1,57 @@
+/* :files, 'spec_javascripts', ... @ (none) */
+
+
+/* :files, 'spec_javascripts', ... @ (none) */
+
+
+/* :asset_packager_compatibility, 'config/asset_packages.yml' @ 1381527416 */
+/* public/javascripts/shared/vendor/lazy_image.js @ 1381527416 */
+/*
+  lazyload.js: Image lazy loading
+
+  Copyright (c) 2012 Vincent Voyer, Stéphane Rios
+
+  Permission is hereby granted, free of charge, to any person obtaining
+  a copy of this software and associated documentation files (the
+  "Software"), to deal in the Software without restriction, including
+  without limitation the rights to use, copy, modify, merge, publish,
+  distribute, sublicense, and/or sell copies of the Software, and to
+  permit persons to whom the Software is furnished to do so, subject to
+  the following conditions:
+
+  The above copyright notice and this permission notice shall be
+  included in all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+  NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+  LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+  OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+  WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+*/
+(function(e,t){function f(e){e.onload=null,g(e,s.push(e)-1)}function l(){a(),setTimeout(a,20)}function c(){o=!0,a(),setTimeout(a,20)}function h(e,t){var n=0;return function(){var r=+(new Date);if(r-n<t)return;n=r,e.apply(this,arguments)}}function p(e,t,n){e.attachEvent?e.attachEvent&&e.attachEvent("on"+t,n):e.addEventListener(t,n,!1)}function d(e,t,n){e.detachEvent?e.detachEvent&&e.detachEvent("on"+t,n):e.removeEventListener(t,n,!1)}function m(e,t){if(!e.getAttribute(r))return;e.src=e.getAttribute(r),e.removeAttribute(r),!t&&t!==0&&(t=v.call(s,e)),t>=0&&(s[t]=null)}function g(e,t){var r=e.getBoundingClientRect().top==0&&e.getBoundingClientRect().bottom==0;return!r&&e.getBoundingClientRect().top<i+n?(m(e,t),!0):!1}function y(){i=e.innerHeight||t.documentElement&&t.documentElement.clientHeight||t.body&&t.body.clientHeight||1e4}function b(){var e=s.length,t,n=!0;for(t=0;t<e;t++){var r=s[t];r!==null&&!g(r,t)&&(n=!1)}n&&o}function w(){}var n=200,r="data-src",i,s=[],o,u=h(y,20),a=h(b,20);e.lzld=f,e.force_lzld=m,y(),p(e,"resize",u),p(e,"scroll",a),p(t,"DOMContentLoaded",l),p(e,"load",c);var v=[].indexOf||function(e){for(var t=0,n=this.length;t<n;t++)if(t in this&&this[t]===e)return t;return-1}})(this,document);
+
+
+/* public/javascripts/mobile/touch_gestures.js @ 1381527416 */
+var TouchGestures={};TouchGestures.clickWithNoDelay=function(e,t,n){if(!e)return;e=$(e),"ontouchstart"in window?(window.jQuery===window.$&&(e=e[0]),e.addEventListener("touchstart",function(r){var i=!1,s=function(e){n?e.preventDefault():i=!0},o=function(n){e.removeEventListener("touchmove",s,!1),e.removeEventListener("touchend",o,!1),!i&&t(n)};e.addEventListener("touchmove",s,!1),e.addEventListener("touchend",o,!1)})):window.jQuery===$?e.on("click",t):e.observe("click",t)},TouchGestures.Press=function(e,t){t=t||{delay:1e3,touches:1},this.element=$(e),this.delay=t.delay||1e3,this.touches=t.touches||1,this.timer=null,this.pressed=!1;var n=this;window.jQuery===$?(this.element[0].addEventListener("touchstart",function(e){n.touchstart(e)},!1),this.element[0].addEventListener("touchend",function(e){n.touchend(e)},!1)):(this.element.addEventListener("touchstart",function(e){n.touchstart(e)},!1),this.element.addEventListener("touchend",function(e){n.touchend(e)},!1))},TouchGestures.Press.prototype={touchstart:function(e){clearTimeout(this.timer),e.touches.length===this.touches?this.timer=setTimeout(function(){this.pressed=!0,window.jQuery===$?this.element.trigger("scribd:touch:pressstart"):this.element.fire("scribd:touch:pressstart")}.bind(this),this.delay):this.pressed=!1},touchend:function(e){this.pressed===!0&&(this.pressed=!1,e.preventDefault(),window.jQuery===$?this.element.trigger("scribd:touch:pressend"):this.element.fire("scribd:touch:pressend")),clearTimeout(this.timer)}},TouchGestures.Swipe=function(e,t,n){this.element=$(t),this.name=e,this.minLength=n.minLength||200,this.tolerance=n.tolerance||100,this.swiping=n.swiping||null,this.complete=n.complete||function(){},this.incomplete=n.incomplete||function(){},n.orientation==="X"||n.orientation==="x"?(this.moveOrientation="X",this.toleranceOrientation="Y"):(this.moveOrientation="Y",this.toleranceOrientation="X"),this.direction=n.direction||1,this.tracking=!1,this.originX=null,this.originY=null;var r=this;window.jQuery===$?(this.element[0].addEventListener("touchstart",function(e){r.touchstart(e)},!1),this.element[0].addEventListener("touchmove",function(e){r.touchmove(e)},!1),this.element[0].addEventListener("touchend",function(e){r.touchend(e)},!1)):(this.element.addEventListener("touchstart",function(e){r.touchstart(e)},!1),this.element.addEventListener("touchmove",function(e){r.touchmove(e)},!1),this.element.addEventListener("touchend",function(e){r.touchend(e)},!1))},TouchGestures.Swipe.prototype={touchstart:function(e){e.touches.length===1&&(this.originX=e.touches[0].clientX,this.originY=e.touches[0].clientY,this.tracking=!0)},touchmove:function(e){if(!this.tracking)return;e.touches.length!==1||!this.validMovingTouch(e.touches[0])?this.reset():this.swiping&&this.swiping(e)},touchend:function(e){if(!this.tracking)return;e.touches.length===0&&e.changedTouches.length===1&&this.validEndingTouch(e.changedTouches[0])?this.complete(e):this.incomplete(e),this.reset()},reset:function(){this.tracking&&(this.tracking=!1)},validEndingTouch:function(e){return this.validMovingTouch(e)&&this.validMinLength(e)},validMovingTouch:function(e){return this.tracking&&this.validDirection(e)&&this.validTolerance(e)},validDirection:function(e){var t=this["origin"+this.moveOrientation],n=e["client"+this.moveOrientation];return this.direction===1?n>=t:n<=t},validTolerance:function(e){return this.movedTolerance(e)<this.tolerance},validMinLength:function(e){return this.movedDistance(e)>this.minLength},movedTolerance:function(e){var t=this["origin"+this.toleranceOrientation],n=e["client"+this.toleranceOrientation];return Math.abs(t-n)},movedDistance:function(e){var t=this["origin"+this.moveOrientation],n=e["client"+this.moveOrientation];return this.direction===1?Math.abs(n-t):Math.abs(t-n)}};
+
+
+/* public/javascripts/mobile/touch_slider.js @ 1381527416 */
+var TouchSlider=function(e){this.handle=e.handle,this.track=e.track,this.scroll=(e.scroll||"X").toUpperCase(),this.previousStep=parseInt(e.currentStep||0),this.scroll==="X"?(this.handleSize=parseFloat(e.handleSize||this.handle.offsetWidth),this.trackSize=parseFloat(e.trackSize||this.track.offsetWidth),this.handleMovement="left"):(this.handleSize=parseFloat(e.handleSize||this.handle.offsetHeight),this.trackSize=parseFloat(e.trackSize||this.track.offsetHeight),this.handleMovement="top"),this.totalSteps=parseInt(e.totalSteps||this.trackSize),this.handleMoveOffset=parseFloat(e.handleMoveOffset||0),this.reset(),this.touchStarted=e.touchStarted||function(){},this.touchMoved=e.touchMoved||function(){},this.touchEnded=e.touchEnded||function(){},this.handleMoved=e.handleMoved||function(){},this.moveHandleToStep(this.previousStep),this.track.addEventListener("touchstart",this,!1),this.track.addEventListener("touchmove",this,!1),this.track.addEventListener("touchend",this,!1)};TouchSlider.prototype={reset:function(){this.handleOffset=this.handleSize/2,this.pixelsPerStep=this.trackSize/this.totalSteps,this.stepOffset=this.pixelsPerStep/2-this.handleOffset},handleEvent:function(e){var t=this[e.type];t&&t.call(this,e)},touchstart:function(e){e.preventDefault(),e.targetTouches.length===1&&this.touchStarted(e)},touchmove:function(e){e.stopPropagation(),e.targetTouches.length===1&&(this.moveHandleToPosition(this.touchPosition(e.targetTouches[0])),this.touchMoved(e))},touchend:function(e){e.preventDefault(),this.moveHandleToStep(this.currentStep()),this.touchEnded(e)},currentStep:function(){return this.positionStep(this.handlePosition)},moveHandleToStep:function(e){return this.moveHandleToPosition(this.stepPosition(e))},touchPosition:function(e){return e["client"+this.scroll]-(this.handleOffset+this.handleMoveOffset)},moveHandleToPosition:function(e){e-=this.handleOffset,e=this.validPosition(e),this.handlePosition=e,this.handle.style.webkitTransform="translate"+this.scroll+"("+e+"px)",this.handleMoved(e)},positionStep:function(e){return Math.round((e+this.handleSize+this.stepOffset)/this.pixelsPerStep)-1},stepPosition:function(e){return this.pixelsPerStep*e+this.handleOffset+this.stepOffset},validPosition:function(e){return Math.max(this.stepOffset,Math.min(this.trackSize-(this.stepOffset+this.handleSize),e))}};
+
+
+/* :asset_packager_compatibility, 'config/asset_packages.yml' @ 1381527383 */
+
+
+/* :files, 'public/javascripts/shared', ... @ (none) */
+
+
+/* :files, 'app/views', ... @ (none) */
+
+
+/* :files, 'app/views', ... @ (none) */
+
+
+/* :class_inlines, 'app/views', ... @ (none) */

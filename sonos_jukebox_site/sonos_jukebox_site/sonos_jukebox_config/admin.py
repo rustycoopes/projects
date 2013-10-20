@@ -8,7 +8,7 @@ class ConfigurationAdmin(admin.ModelAdmin):
 
 
 class JukeboxShortCutAdmin(admin.ModelAdmin):
-    list_display = ['key', 'value', 'type']
+    list_display = ['keys', 'track', 'type']
 
 
 admin.site.register(Configuration, ConfigurationAdmin)

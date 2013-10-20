@@ -1,0 +1,35 @@
+10-20 08:02 root         INFO     Sent short cut "A1"
+10-20 08:02 django.db.backends DEBUG    (0.001) SELECT `sonos_jukebox_config_jukeboxshortcut`.`id`, `sonos_jukebox_config_jukeboxshortcut`.`keys`, `sonos_jukebox_config_jukeboxshortcut`.`type`, `sonos_jukebox_config_jukeboxshortcut`.`track` FROM `sonos_jukebox_config_jukeboxshortcut` WHERE `sonos_jukebox_config_jukeboxshortcut`.`keys` = 'A1' ; args=('A1',)
+10-20 08:02 django.db.backends DEBUG    (0.010) SELECT `sonos_jukebox_config_configuration`.`id`, `sonos_jukebox_config_configuration`.`key`, `sonos_jukebox_config_configuration`.`value` FROM `sonos_jukebox_config_configuration` WHERE `sonos_jukebox_config_configuration`.`key` = 'TARGET_SPEAKER' ; args=('TARGET_SPEAKER',)
+10-20 08:02 root         INFO     Short cut track is"Rod" running from "Pandora"
+10-20 08:02 root         INFO     Successfully read speaker to send to as "Kitchen"
+10-20 08:02 root         INFO     found the following sonos servers : 192.168.2.10,192.168.2.18,192.168.2.12,192.168.2.14,192.168.2.13,192.168.2.11
+10-20 08:02 root         INFO     logging into pandora
+10-20 08:02 root         INFO     loading station list
+10-20 08:02 root         INFO     station list loaded 
+10-20 08:02 root         INFO     found track
+10-20 08:02 requests.packages.urllib3.connectionpool INFO     Starting new HTTP connection (1): 192.168.2.12
+10-20 08:02 requests.packages.urllib3.connectionpool DEBUG    Setting read timeout to None
+10-20 08:02 requests.packages.urllib3.connectionpool DEBUG    "GET /status/zp HTTP/1.1" 200 None
+10-20 08:02 requests.packages.urllib3.connectionpool INFO     Starting new HTTP connection (1): 192.168.2.10
+10-20 08:02 requests.packages.urllib3.connectionpool DEBUG    Setting read timeout to None
+10-20 08:02 requests.packages.urllib3.connectionpool DEBUG    "GET /status/zp HTTP/1.1" 200 None
+10-20 08:02 requests.packages.urllib3.connectionpool INFO     Starting new HTTP connection (1): 192.168.2.13
+10-20 08:02 requests.packages.urllib3.connectionpool DEBUG    Setting read timeout to None
+10-20 08:02 requests.packages.urllib3.connectionpool DEBUG    "GET /status/zp HTTP/1.1" 200 None
+10-20 08:02 requests.packages.urllib3.connectionpool INFO     Starting new HTTP connection (1): 192.168.2.18
+10-20 08:02 requests.packages.urllib3.connectionpool DEBUG    Setting read timeout to None
+10-20 08:02 requests.packages.urllib3.connectionpool DEBUG    "GET /status/zp HTTP/1.1" 200 None
+10-20 08:02 requests.packages.urllib3.connectionpool INFO     Starting new HTTP connection (1): 192.168.2.14
+10-20 08:02 requests.packages.urllib3.connectionpool DEBUG    Setting read timeout to None
+10-20 08:02 requests.packages.urllib3.connectionpool DEBUG    "GET /status/zp HTTP/1.1" 200 None
+10-20 08:02 root         INFO     Playing on speaker 192.168.2.14
+10-20 08:02 requests.packages.urllib3.connectionpool INFO     Starting new HTTP connection (1): 192.168.2.14
+10-20 08:02 requests.packages.urllib3.connectionpool DEBUG    Setting read timeout to None
+10-20 08:02 requests.packages.urllib3.connectionpool DEBUG    "POST /MediaRenderer/AVTransport/Control HTTP/1.1" 200 266
+10-20 08:02 requests.packages.urllib3.connectionpool INFO     Starting new HTTP connection (1): 192.168.2.14
+10-20 08:02 requests.packages.urllib3.connectionpool DEBUG    Setting read timeout to None
+10-20 08:02 requests.packages.urllib3.connectionpool DEBUG    "POST /MediaRenderer/AVTransport/Control HTTP/1.1" 200 240
+10-20 08:02 requests.packages.urllib3.connectionpool INFO     Starting new HTTP connection (1): 192.168.2.11
+10-20 08:02 requests.packages.urllib3.connectionpool DEBUG    Setting read timeout to None
+10-20 08:02 requests.packages.urllib3.connectionpool DEBUG    "GET /status/zp HTTP/1.1" 200 None

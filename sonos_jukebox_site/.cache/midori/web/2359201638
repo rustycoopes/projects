@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Resources - Wall Box SONOS Controller</title>
+<meta name='keywords' content='SONOS, UPnP, &quot;Raspberry Pi&quot;, RPi, Controller, jukebox, wallbox, &quot;wall box&quot;' />
+<meta property='og:site_name' content='Wall Box SONOS Controller' />
+<meta property='og:title' content='Resources' />
+<meta property='og:description' content='The diagram above shows how the whole thing fits together.  Assuming that you already have a wireless home media network, the total cost of the project is around £60 ($100) plus the cost of the...' />
+<meta property='og:image' content='http://wallbox.weebly.com/uploads/1/9/5/3/19536949/7171752_orig.png' />
+<meta property='og:image' content='http://wallbox.weebly.com/uploads/1/9/5/3/19536949/1366632953.jpg' />
+<meta property='og:image' content='http://wallbox.weebly.com/uploads/1/9/5/3/19536949/1366633032.jpg' />
+<meta property='og:image' content='http://wallbox.weebly.com/uploads/1/9/5/3/19536949/6936925.jpg?149' />
+<meta property='og:image' content='http://wallbox.weebly.com/uploads/1/9/5/3/19536949/9239274.jpg?106' />
+<meta property='og:image' content='http://wallbox.weebly.com/uploads/1/9/5/3/19536949/1366633470.jpg' />
+<meta property='og:image' content='http://wallbox.weebly.com/uploads/1/9/5/3/19536949/119944.jpg?97' />
+<meta property='og:url' content='http://wallbox.weebly.com/resources.html' />
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<meta name="google-site-verification" content="GsEQ0Yey2E2l_5DolOHvKOQcjxv_wbSz6yIsmdBOIQ8" /><link rel="stylesheet" href="//cdn2.editmysite.com/css/sites.css?buildTime=1367020905" type="text/css" /><link rel='stylesheet' type='text/css' href='http://cdn1.editmysite.com/editor/libraries/fancybox/fancybox.css?1367020905' />
+<link rel='stylesheet' href='//cdn1.editmysite.com/editor/images/common/common-v2.css?buildTime=1367020905' type='text/css' />
+<link rel='stylesheet' type='text/css' href='/files/main_style.css?1367219242' title='wsite-theme-css' />
+<style type='text/css'>
+.wsite-elements div.paragraph, .wsite-elements p, .wsite-elements .product-block .product-title, .wsite-elements .product-description, .wsite-elements .wsite-form-field label, .wsite-elements .wsite-form-field label, #wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {}
+#wsite-content div.paragraph, #wsite-content p, #wsite-content .product-block .product-title, #wsite-content .product-description, #wsite-content .wsite-form-field label, #wsite-content .wsite-form-field label, .blog-sidebar div.paragraph, .blog-sidebar p, .blog-sidebar .wsite-form-field label, .blog-sidebar .wsite-form-field label {}
+.wsite-elements h2, .wsite-elements .product-long .product-title, .wsite-elements .product-large .product-title, .wsite-elements .product-small .product-title, #wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {}
+#wsite-content h2, #wsite-content .product-long .product-title, #wsite-content .product-large .product-title, #wsite-content .product-small .product-title, .blog-sidebar h2 {}
+#wsite-title {}
+</style>
+<script type='text/javascript'><!--
+var STATIC_BASE = 'http://cdn1.editmysite.com/';
+var STYLE_PREFIX = 'wsite';
+//-->
+</script>
+<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
+<script type='text/javascript' src='http://cdn1.editmysite.com/editor/libraries/jquery_effects.js?1367020905'></script>
+<script type='text/javascript' src='http://cdn1.editmysite.com/editor/libraries/jquery.animate.js?1367020905'></script>
+<script type='text/javascript' src='http://cdn1.editmysite.com/editor/libraries/fancybox/fancybox.min.js?1367020905'></script>
+<script type='text/javascript' src='http://cdn1.editmysite.com/editor/images/common/utilities-jq.js?1367020905'></script>
+<script type='text/javascript' src='http://cdn1.editmysite.com/editor/libraries/flyout_menus_jq.js?1367020905'></script>
+<script type='text/javascript'><!--
+(function(jQuery){
+function initFlyouts(){initPublishedFlyoutMenus([{"id":"140411987169741940","title":"Home","url":"index.html"},{"id":"900326874209607578","title":"Wall boxes","url":"wall-boxes.html"},{"id":"629555251774409789","title":"1. Interfacing the RPi","url":"1-interfacing-the-rpi.html"},{"id":"757354211481056056","title":"2. Decoding pulses","url":"2-decoding-pulses.html"},{"id":"617202305132732265","title":"3. SONOS API","url":"3-sonos-api.html"},{"id":"163066697256165500","title":"Resources","url":"resources.html"},{"id":"265555308721549410","title":"Discussion","url":"discussion.html"}],'163066697256165500',"<li class='wsite-nav-more'><a href='#'>more...<\/a><\/li>",'active',false)}
+if (jQuery) {
+if (jQuery.browser.msie) window.onload = initFlyouts;
+else jQuery(initFlyouts)
+}else{
+if (Prototype.Browser.IE) window.onload = initFlyouts;
+else document.observe('dom:loaded', initFlyouts);
+}
+})(window._W && _W.jQuery)
+//-->
+</script>
+</head>
+<body class='wsite-theme-light no-header-page wsite-page-resources'>
+<div class="header-wrap">
+	<div class="container">
+		<table id="header">
+			<tr>
+				<td id="logo"><span class='wsite-logo'><a href='/'><span id="wsite-title">Wall Box SONOS Controller</span></a></span></td>
+				<td id="header-right">
+					<table>
+						<tr>
+							<td class="phone-number"><span class='wsite-text'>Contact</span></td>
+							<td class="social"><div style="text-align:left;"><div style="height:0px;overflow:hidden"></div>
+<span class="wsite-social wsite-social-default"><a class='wsite-social-item wsite-social-twitter' href='http://twitter.com/everycolour' target='_blank'><span class='wsite-social-item-inner'></span></a><a class='wsite-social-item wsite-social-linkedin' href='http://www.linkedin.com/pub/steve-devlin/3/533/130' target='_blank'><span class='wsite-social-item-inner'></span></a></span>
+<div style="height:0px;overflow:hidden"></div></div></td>
+						</tr>
+					</table>
+					<div class="search"></div>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+<div class="container">
+	<div id="navigation">
+		<ul><li id='pg140411987169741940'><a href='/index.html'>Home</a></li><li id='pg900326874209607578'><a href='/wall-boxes.html'>Wall boxes</a></li><li id='pg629555251774409789'><a href='/1-interfacing-the-rpi.html'>1. Interfacing the RPi</a></li><li id='pg757354211481056056'><a href='/2-decoding-pulses.html'>2. Decoding pulses</a></li><li id='pg617202305132732265'><a href='/3-sonos-api.html'>3. SONOS API</a></li><li id='active'><a href='/resources.html'>Resources</a></li><li id='pg265555308721549410'><a href='/discussion.html'>Discussion</a></li></ul>
+		<div class="clear"></div>
+	</div>
+	<div id="main">
+		<div id="banner">
+			<div class="wsite-header"></div>
+		</div>
+		<div id="content">
+			<div id='wsite-content' class='wsite-elements wsite-not-footer'>
+<div><div class="wsite-image wsite-image-border-none " style="padding-top:10px;padding-bottom:10px;margin-left:0;margin-right:0;text-align:center">
+<a>
+<img src="/uploads/1/9/5/3/19536949/7171752_orig.png" alt="Picture" style="width:100%;max-width:960px" />
+</a>
+<div style="display:block;font-size:90%"></div>
+</div></div>
+
+<div class="paragraph" style="text-align:left;">The diagram above&nbsp;shows how the whole thing fits together. &nbsp;Assuming that you already have a wireless home media network, the total cost of the project is around &pound;60 ($100) plus the cost of the wallbox. &nbsp;Wall boxes can be found for as little as $50, but some are&nbsp;collectible&nbsp;and can cost many $100s. &nbsp;Everything else you will need is listed on this page.<br /></div>
+
+<div><div class="wsite-multicol"><div class='wsite-multicol-table-wrap' style='margin:0 -15px'>
+<table class='wsite-multicol-table'>
+<tbody class='wsite-multicol-tbody'>
+<tr class='wsite-multicol-tr'>
+<td class='wsite-multicol-col' style='width:50%;padding:0 15px'>
+
+<div><div class="wsite-image wsite-image-border-border-width:0 " style="padding-top:10px;padding-bottom:10px;margin-left:10px;margin-right:10px;text-align:center">
+<a>
+<img src="/uploads/1/9/5/3/19536949/1366632953.jpg" alt="Picture" style="width:auto;max-width:100%" />
+</a>
+<div style="display:block;font-size:90%"></div>
+</div></div>
+
+</td>
+<td class='wsite-multicol-col' style='width:50%;padding:0 15px'>
+
+<div class="paragraph" style="text-align:left;"><br /><strong style="">Raspberry Pi</strong><br />The inspiration for my project. &nbsp;An beautiful little&nbsp;<a href="http://www.raspberrypi.org/" title="" style="">computer</a>&nbsp;which has rekindled my interest in software development. &nbsp;You can buy them at RS Components, Farnell and Maplin. &nbsp;If there is a waiting list you can also buy them for a small premium on ebay. &nbsp;I never thought I'd see the day of computer touts! &nbsp;You can &nbsp;use a Model A or B - but I found the B to be much easier to get up and running as you can connect it to the Internet with a cable and be able to download drivers etc. directly. &nbsp;Cost &pound;25 ($35)<br /></div>
+
+</td>
+</tr>
+</tbody>
+</table>
+</div></div></div>
+
+<div><div class="wsite-multicol"><div class='wsite-multicol-table-wrap' style='margin:0 -15px'>
+<table class='wsite-multicol-table'>
+<tbody class='wsite-multicol-tbody'>
+<tr class='wsite-multicol-tr'>
+<td class='wsite-multicol-col' style='width:50%;padding:0 15px'>
+
+<div><div class="wsite-image wsite-image-border-border-width:0 " style="padding-top:10px;padding-bottom:10px;margin-left:10px;margin-right:10px;text-align:center">
+<a>
+<img src="/uploads/1/9/5/3/19536949/1366633032.jpg" alt="Picture" style="width:auto;max-width:100%" />
+</a>
+<div style="display:block;font-size:90%"></div>
+</div></div>
+
+</td>
+<td class='wsite-multicol-col' style='width:50%;padding:0 15px'>
+
+<div class="paragraph" style="text-align:left;"><strong style="">Wireless dongle for Raspeberry Pi</strong><br />Edimax EW-7811UN USB Adapter<br />Great little product and value from&nbsp;<a href="http://www.amazon.co.uk/Edimax-EW-7811UN-150Mbps-Wireless-Adapter/dp/B003MTTJOY/ref=sr_1_1?ie=UTF8&amp;qid=1366631026&amp;sr=8-1&amp;keywords=usb+wifi" title="" style="">Amazon</a>. &nbsp;Cost &pound;7 ($10)<br /></div>
+
+</td>
+</tr>
+</tbody>
+</table>
+</div></div></div>
+
+<div><div class="wsite-multicol"><div class='wsite-multicol-table-wrap' style='margin:0 -15px'>
+<table class='wsite-multicol-table'>
+<tbody class='wsite-multicol-tbody'>
+<tr class='wsite-multicol-tr'>
+<td class='wsite-multicol-col' style='width:50%;padding:0 15px'>
+
+<div><div class="wsite-image wsite-image-border-none " style="padding-top:10px;padding-bottom:10px;margin-left:0;margin-right:0;text-align:center">
+<a>
+<img src="/uploads/1/9/5/3/19536949/6936925.jpg?149" alt="Picture" style="width:auto;max-width:100%" />
+</a>
+<div style="display:block;font-size:90%"></div>
+</div></div>
+
+</td>
+<td class='wsite-multicol-col' style='width:50%;padding:0 15px'>
+
+<div class="paragraph" style="text-align:left;"><strong style="line-height: 1.5;">Transformer for Wallbox</strong><br />Check your wallbox to see what voltage it uses. &nbsp;My Rowe-Ami WRA 200 was rated for 25VAC and draws about 1.5 Amps. &nbsp;I had an old 240V-24V round wire transformer which I used. &nbsp;These are easy to find and a quick search on Maplin revealed&nbsp;<a href="http://www.maplin.co.uk/weatherproof-ac-output-adaptors-633827#specification" title="" style="">this nice one</a>&nbsp;for only &pound;25 ($35).<br /></div>
+
+</td>
+</tr>
+</tbody>
+</table>
+</div></div></div>
+
+<div><div class="wsite-multicol"><div class='wsite-multicol-table-wrap' style='margin:0 -15px'>
+<table class='wsite-multicol-table'>
+<tbody class='wsite-multicol-tbody'>
+<tr class='wsite-multicol-tr'>
+<td class='wsite-multicol-col' style='width:50%;padding:0 15px'>
+
+<div><div class="wsite-image wsite-image-border-none " style="padding-top:10px;padding-bottom:10px;margin-left:0;margin-right:0;text-align:center">
+<a>
+<img src="/uploads/1/9/5/3/19536949/9239274.jpg?106" alt="Picture" style="width:auto;max-width:100%" />
+</a>
+<div style="display:block;font-size:90%"></div>
+</div></div>
+
+</td>
+<td class='wsite-multicol-col' style='width:50%;padding:0 15px'>
+
+<div class="paragraph" style="text-align:left;"><strong style="">Bridge Rectifier</strong><br />Has to be rated to 35V. &nbsp;I used a&nbsp;<a href="http://www.datasheetcatalog.org/datasheet/eic/W01.pdf" title="" style="">W005&nbsp;</a>which I bought from Maplin&nbsp;<a href="http://www.maplin.co.uk/single-phase-1.5a-silicon-bridge-rectifiers-46437" title="" style="">here</a>. &nbsp;It cost 49p. ($0.75)&nbsp;<br /></div>
+
+</td>
+</tr>
+</tbody>
+</table>
+</div></div></div>
+
+<div><div class="wsite-multicol"><div class='wsite-multicol-table-wrap' style='margin:0 -15px'>
+<table class='wsite-multicol-table'>
+<tbody class='wsite-multicol-tbody'>
+<tr class='wsite-multicol-tr'>
+<td class='wsite-multicol-col' style='width:50%;padding:0 15px'>
+
+<div><div class="wsite-image wsite-image-border-border-width:0 " style="padding-top:10px;padding-bottom:10px;margin-left:10px;margin-right:10px;text-align:center">
+<a>
+<img src="/uploads/1/9/5/3/19536949/1366633470.jpg" alt="Picture" style="width:auto;max-width:100%" />
+</a>
+<div style="display:block;font-size:90%"></div>
+</div></div>
+
+</td>
+<td class='wsite-multicol-col' style='width:50%;padding:0 15px'>
+
+<div class="paragraph" style="text-align:left;"><strong style="">3.3V Voltage Regulator</strong><br />Should be rated to 35V, although there is a slight voltage drop from most rectifiers and I used a&nbsp;<a href="http://www.maplin.co.uk/150ma-ultra-low-dropout-positive-voltage-regulator-46323" title="" style="">30V regulator</a>&nbsp;which worked fine.<br />Cost 99p ($1.50)<br /></div>
+
+</td>
+</tr>
+</tbody>
+</table>
+</div></div></div>
+
+<div><div class="wsite-multicol"><div class='wsite-multicol-table-wrap' style='margin:0 -15px'>
+<table class='wsite-multicol-table'>
+<tbody class='wsite-multicol-tbody'>
+<tr class='wsite-multicol-tr'>
+<td class='wsite-multicol-col' style='width:50.119331742243%;padding:0 15px'>
+
+<div><div class="wsite-image wsite-image-border-none " style="padding-top:10px;padding-bottom:10px;margin-left:0;margin-right:0;text-align:center">
+<a>
+<img src="/uploads/1/9/5/3/19536949/119944.jpg?97" alt="Picture" style="width:auto;max-width:100%" />
+</a>
+<div style="display:block;font-size:90%"></div>
+</div></div>
+
+</td>
+<td class='wsite-multicol-col' style='width:49.880668257757%;padding:0 15px'>
+
+<div class="paragraph" style="text-align:left;"><strong style="">Resistors</strong><br />Any standard resistors will do, the circuit is very tolerant to different resistor values and the current is tiny.&nbsp;<br /></div>
+
+</td>
+</tr>
+</tbody>
+</table>
+</div></div></div>
+
+<div class="paragraph" style="text-align:left;"><span style="line-height: 1.5;"><em>In addition to this you'll just need some strip board, jumper cables and some general purpose wire to connect the transformer to the wallbox. &nbsp;</em></span><br /></div>
+
+<h2 style="text-align:left;">Source Code</h2>
+<div class="paragraph" style="display:block;">You can find the latest version of the Python code in Github here&nbsp;<A title="" href="https://github.com/sjdevlin/wallbox">https://github.com/sjdevlin/wallbox</A>.<br /><br />If you are new to Github and would rather just get the Python code then you can download a copy here, but please note that the Github version is the one I will keep up to date and hopefully where others will continue to refine and improve the code.</div>
+
+<div class="wsite-scribd">
+
+
+
+
+<div id="doc_138257879" style="padding:20px 0"></div>
+<script type="text/javascript">
+if (!window.scribd_js_loaded) {
+	window.scribd_js_loaded = true;
+	document.write("<script type=\"text/javascript\" src=\"http://www.scribd.com/javascripts/scribd_api.js\"></scr"+"ipt>");
+}
+</script>
+<script type="text/javascript">
+var scribd_doc_138257879 = scribd.Document.getDoc(138257879, "key-1xra5th3mifll6feod00");
+scribd_doc_138257879.addParam("jsapi_version", 2);
+scribd_doc_138257879.addParam("height", 500);
+scribd_doc_138257879.write("doc_138257879");
+</script>
+</div></div>
+
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div id="footer">
+		
+
+<style type='text/css'>
+<!--
+
+#weebly-footer {
+	position: relative !important;
+	}
+
+#weebly-footer a {
+	position: relative !important;
+	z-index: 2 !important;
+	cursor: pointer;
+	}
+
+#weebly-footer-dynamic {
+	position: relative !important;
+	display: inline-block !important;
+	width: 72px !important;
+	height: 1px !important;
+	vertical-align: middle !important;
+	text-decoration: none !important;
+	border: 0 !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	}
+
+.weebly-footer-button {
+	position: absolute;
+	top: -14px;
+	left: 0;
+	display: block;
+	_display: inline-block;
+	width: 72px;
+	height: 29px;
+	background: url("http://static-cdn.weebly.com/images/weebly-footer-asset.png") no-repeat left top;
+	_background: url(data:image/gif;base64,AAAA);
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://static-cdn.weebly.com/images/weebly-footer.png', sizingMethod='crop');
+	}
+
+.weebly-footer-hover .weebly-footer-button {
+	background: url("http://static-cdn.weebly.com/images/weebly-footer-asset.png") no-repeat -79px top;
+	_background: url(data:image/gif;base64,AAAA);
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://static-cdn.weebly.com/images/weebly-footer-active.png', sizingMethod='crop');
+	}
+
+.weebly-footer-button-text {
+	display: none;
+	}
+
+#weebly-footer-message {
+	display: none;
+	position: absolute;
+	top: -86px;
+	left: 1px;
+	width: 395px;
+	height: 98px;
+	_background: url(data:image/gif;base64,AAAA);
+	}
+
+.weebly-footer-dynamic-hover #weebly-footer-message {
+	display: block;
+	}
+
+.weebly-footer-right #weebly-footer-message {
+	left: -310px;
+	}
+
+.weebly-footer-message-content {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 59px;
+	background: url("http://static-cdn.weebly.com/images/weebly-footer-asset.png") no-repeat left -30px;
+	_background: none;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://static-cdn.weebly.com/images/weebly-footer-content.png', sizingMethod='crop');
+	}
+
+.weebly-footer-message-carrot {
+	position: relative;
+	left: 55px;
+	float: left;
+	display: block;
+	width: 12px;
+	height: 7px;
+	background: url("http://static-cdn.weebly.com/images/weebly-footer-asset.png") no-repeat -159px -1px;
+	_background: none;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://static-cdn.weebly.com/images/weebly-footer-carrot.png', sizingMethod='crop');
+	}
+
+.weebly-footer-right .weebly-footer-message-carrot {
+	left: 367px;
+	}
+
+-->
+</style>
+
+<span id="weebly-footer">
+  Create a <a target="_blank" href="http://www.weebly.com/">free website</a> with
+  <span id="weebly-footer-mark"></span>
+  <a id="weebly-footer-dynamic" target="_blank" href="http://www.weebly.com/?footer">
+	<span id="weebly-footer-button" class="weebly-footer-button">
+	  <span class="weebly-footer-button-text">Weebly</span>
+	</span>
+	<span id="weebly-footer-message">
+	  <span class="weebly-footer-message-content"></span>
+	  <span class="weebly-footer-message-carrot"></span>
+	</span>
+  </a>
+</span>
+
+<script type='text/javascript'>
+<!--
+
+(function(jQuery) {
+	if (jQuery) {
+		jQuery('#weebly-footer').on({
+			'mouseover': function(ev) { jQuery(this).addClass('weebly-footer-hover'); },
+			'mouseout': function(ev) { jQuery(this).removeClass('weebly-footer-hover'); }
+		});
+
+		jQuery('#weebly-footer-dynamic').on({
+			'mouseover': function(ev) {
+				var wf = jQuery('#weebly-footer'),
+				wfb = jQuery('#weebly-footer-button'),
+				wfm = jQuery('#weebly-footer-message'),
+				overflow = wfb.offset().left + wfm.width() > jQuery(window).width();
+
+				// Dynamically adjust where message is displayed
+				wf.toggleClass('weebly-footer-right', overflow);
+
+				jQuery(this).addClass('weebly-footer-dynamic-hover');
+			},
+			'mouseout': function(ev) {
+				jQuery(this).removeClass('weebly-footer-dynamic-hover')
+			}
+		});
+	}
+	else {
+		function positionWeeblyFooter() {
+			var e = $('weebly-footer-mark');
+			if (e.cumulativeOffset().left > document.viewport.getWidth()/2) {
+				e.up().addClassName('weebly-footer-right');
+			}else{
+				e.up().removeClassName('weebly-footer-right');
+			}
+		}
+
+		$('weebly-footer')
+			.observe('mouseover', function() {
+				$(this).addClassName('weebly-footer-hover');
+			})
+			.observe('mouseout', function() {
+				$(this).removeClassName('weebly-footer-hover');
+			});
+
+		$('weebly-footer-dynamic')
+			.observe('mouseover', function() {
+				$(this).addClassName('weebly-footer-dynamic-hover');
+				positionWeeblyFooter();
+			})
+			.observe('mouseout', function() {
+				$(this).removeClassName('weebly-footer-dynamic-hover');
+			});
+	}
+})(window._W && _W.jQuery);
+
+//-->
+</script>
+
+<script type='text/javascript'>
+<!--
+
+if (document.cookie.match(/(^|;)\s*is_mobile=1/)) {
+	var windowHref = window.location.href || '';
+	if (windowHref.indexOf('?') > -1) {
+		windowHref += '&';
+	} else {
+		windowHref += '?';
+	}
+	document.write(
+		"&nbsp;&nbsp;&nbsp;&nbsp;" +
+		"<a class='wsite-view-link-mobile' href='" + windowHref + "view=mobile'>Mobile Site</a>"
+	);
+}
+
+//-->
+</script>
+
+	</div>
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-40320076-1', 'weebly.com');
+  ga('send', 'pageview');
+
+</script>
+<script type="text/javascript">
+
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-7870337-1']);
+	_gaq.push(['_setDomainName', 'none']);
+	_gaq.push(['_setAllowLinker', true]);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+
+</script>
+
+<!-- Start Quantcast tag -->
+<script type="text/javascript">
+	_qoptions={
+		qacct:"p-0dYLvhSGGqUWo"
+	};
+</script>
+<script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+<noscript>
+<img src="http://pixel.quantserve.com/pixel/p-0dYLvhSGGqUWo.gif" style="display: none;" border="0" height="1" width="1" alt="Quantcast"/>
+</noscript>
+<!-- End Quantcast tag -->
+
+<script>
+
+	(function(jQuery) {
+		try {
+			if (jQuery) {
+				jQuery('div.blog-social div.fb-like').attr('class', 'blog-social-item blog-fb-like');
+				jQuery('#commentArea iframe').css('min-height', '410px');
+				if ( jQuery('.product-button').length > 0 ) {
+					jQuery(document).ready(
+						function() {
+							jQuery.ajax({
+								type: "GET",
+								url: "/ajax/apps/stats.php?stat=sites.commerce.legacy.visit"
+							});
+						}
+					);
+					jQuery('.product-button').click(
+						function() {
+							var val = jQuery(this.form).serialize();
+							jQuery.ajax({
+								type: "POST",
+								url: "/ajax/apps/stats.php?stat=sites.commerce.legacy.addcart",
+								data: { values: val, host: window.location.host }
+							});
+						}
+					);
+				}
+			}
+			else {
+				// Prototype
+				$$('div.blog-social div.fb-like').each(function(div) {
+					div.className = 'blog-social-item blog-fb-like';
+				});
+				$$('#commentArea iframe').each(function(iframe) {
+					iframe.style.minHeight = '410px';
+				});
+			}
+		}
+		catch(ex) {}
+	})(window._W && _W.jQuery);
+
+</script>
+
+</body>
+</html>

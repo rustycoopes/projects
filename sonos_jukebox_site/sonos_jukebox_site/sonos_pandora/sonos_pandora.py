@@ -22,17 +22,17 @@ class SonosForPandora(object):
         stationId = self.rpandora.getIdForStation(stationNameLike)
         
         for speakerIp in self.sonos.get_speaker_ips():
-            all_info = sonos.get_speaker_info()
+            sonosSpeaker = SoCo(str(speakerIp))
+            all_info = sonosSpeaker.get_speaker_info()
             if onSpeakerLike in all_info['zone_name'] :
                 logging.info("Playing on speaker %s" % str(speakerIp))
-                sonos = SoCo(str(speakerIp))
-                sonos.play_uri("pndrradio:%s" % str(stationId), '')
+                sonosSpeaker.play_uri("pndrradio:%s" % str(stationId), '')
                      
     def stopPlaying(self):
         
         for speakerIp in self.sonos.get_speaker_ips():
-            sonos = SoCo(speakerIp)
-            all_info = sonos.get_speaker_info()
+            sonosSpeaker = SoCo(speakerIp)
+            all_info = sonosSpeaker.get_speaker_info()
             for item in all_info:
                 logging.info("Stopping for speaker %s: %s" % (item, all_info[item]))
             sonos.stop()
@@ -42,11 +42,11 @@ class SonosForPandora(object):
     
         for speakerIp in self.sonos.get_speaker_ips():
             logging.info("********* %s ***********" % str(speakerIp))
-            sonos = SoCo(speakerIp)
-            all_info = sonos.get_speaker_info()
+            sonosSpeaker = SoCo(speakerIp)
+            all_info = sonosSpeaker.get_speaker_info()
             for item in all_info:
                 logging.info("    %s: %s" % (item, all_info[item]))
-            logging.info('co-ordinator = ' + str(sonos.get_group_coordinator(all_info['zone_name'], True)))
+            logging.info('co-ordinator = ' + str(sonosSpeaker.get_group_coordinator(all_info['zone_name'], True)))
             logging.info("****************************" )
            
 
