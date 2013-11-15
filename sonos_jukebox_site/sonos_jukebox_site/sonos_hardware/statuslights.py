@@ -54,6 +54,10 @@ class ProgramStatusManager(threading.Thread):
                 self.breadBoard.RecievedKeysLight(True)
                 self.breadBoard.LoadingMusicLight(True)
                 self.breadBoard.CallSonosLight(False)
+            elif ProgramStatusManager.status == ProgramStatus.Waiting:
+                self.breadBoard.RecievedKeysLight(True)
+                self.breadBoard.LoadingMusicLight(True)
+                self.breadBoard.CallSonosLight(True)
             sleep(.25)
             self.breadBoard.RunningLight(True)
             sleep(.25)
