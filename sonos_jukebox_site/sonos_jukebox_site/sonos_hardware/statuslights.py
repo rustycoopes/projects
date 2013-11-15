@@ -40,19 +40,22 @@ class ProgramStatusManager(threading.Thread):
         logging.info( 'Hardware Status Manager running')
         while ProgramStatusManager.run:
             if ProgramStatusManager.status != ProgramStatus.NotRunning:
-                self.breadBoard.RunningLight(True)
+                self.breadBoard.RunningLight(False)
 
             if ProgramStatusManager.status == ProgramStatus.ReceivedKeys:
-                self.breadBoard.RecievedKeysLight(True)
-            elif ProgramStatusManager.status == ProgramStatus.LoadingMusicInfo:
+                self.breadBoard.RecievedKeysLight(False)
                 self.breadBoard.LoadingMusicLight(True)
+                self.breadBoard.CallSonosLight(True)
+            elif ProgramStatusManager.status == ProgramStatus.LoadingMusicInfo:
+                self.breadBoard.RecievedKeysLight(True)
+                self.breadBoard.LoadingMusicLight(False)
+                self.breadBoard.CallSonosLight(True)
             elif ProgramStatusManager.status == ProgramStatus.CallingSonos:
-                self.breadBoard.CallingSonos(True)
+                self.breadBoard.RecievedKeysLight(True)
+                self.breadBoard.LoadingMusicLight(True)
+                self.breadBoard.CallSonosLight(False)
             sleep(.25)
             self.breadBoard.RunningLight(False)
-            self.breadBoard.RecievedKeysLight(False)
-            self.breadBoard.LoadingMusicLight(False)
-            self.breadBoard.CallSonosLight(False)
             sleep(.25)
 
     @staticmethod
