@@ -22,7 +22,7 @@ class RussPandora(object):
         if self.stationList == None:
             logging.info( "logging into pandora")
             russPandora = Pandora()
-            username = "russell.cooper@btinternet.com"
+            username = "russell.cooper@btinternet.com" 
             password = "cooperman"
             russPandora.authenticate(username, password)
             logging.info(  "loading station list")

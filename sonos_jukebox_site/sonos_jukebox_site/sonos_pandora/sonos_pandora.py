@@ -4,6 +4,9 @@ from soco import SoCo
 from soco import SonosDiscovery
 from russpandora import RussPandora
 import logging
+from sonos_hardware.statuslights import ProgramStatusManager
+from sonos_hardware.statuslights import ProgramStatus
+
 
 class SonosForPandora(object):
     
@@ -19,16 +22,21 @@ class SonosForPandora(object):
     
     def playStation(self, stationNameLike, onSpeakerLike): 
   
+        ProgramStatusManager.updateStatus(ProgramStatus.LoadingMusicInfo)
         stationId = self.rpandora.getIdForStation(stationNameLike)
         
+        ProgramStatusManager.updateStatus(ProgramStatus.CallingSonos)
         for speakerIp in self.sonos.get_speaker_ips():
-            sonosSpeaker = SoCo(str(speakerIp))
-            all_info = sonosSpeaker.get_speaker_info()
-            if onSpeakerLike in all_info['zone_name'] :
-                logging.info("Playing on speaker %s" % str(speakerIp))
-                sonosSpeaker.play_uri("pndrradio:%s" % str(stationId), '')
-            else:
-                logging.info('Skipping player "%s"' % all_info['zone_name'])
+            try:
+                sonosSpeaker = SoCo(str(speakerIp))
+                all_info = sonosSpeaker.get_speaker_info()
+                if onSpeakerLike in all_info['zone_name'] :
+                    logging.info("Playing on speaker %s" % str(speakerIp))
+                    sonosSpeaker.play_uri("pndrradio:%s" % str(stationId), '')
+                else:
+                    logging.info('Skipping player "%s"' % all_info['zone_name'])
+            except:
+                logging.error('Failed calling %s' % speakerIp)
                      
     def stopPlaying(self):
         
