@@ -55,7 +55,7 @@ class ProgramStatusManager(threading.Thread):
                 self.breadBoard.LoadingMusicLight(True)
                 self.breadBoard.CallSonosLight(False)
             sleep(.25)
-            self.breadBoard.RunningLight(False)
+            self.breadBoard.RunningLight(True)
             sleep(.25)
 
     @staticmethod
