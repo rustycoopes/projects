@@ -33,12 +33,12 @@ class JukeboxSignalManager(threading.Thread):
         currentSignalState = False
         
         while JukeboxSignalManager.run:
-            if self.breadboardinputs.KeyInputIsSignalled() and currentSignalState == False:
+            if self.breadBoard.KeyInputIsSignalled() and currentSignalState == False:
                 currentSignalState = True
                 logging.info("Recieved Signal On")
             
 
-            elif not self.breadboardinputs.KeyInputIsSignalled() and currentSignalState == True:
+            elif not self.breadBoard.KeyInputIsSignalled() and currentSignalState == True:
                 currentSignalState = False
                 logging.info("Recieved Signal Off")
             
