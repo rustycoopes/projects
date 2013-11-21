@@ -15,7 +15,15 @@ class Command(BaseCommand):
     args = '<poll_id poll_id ...>'
     help = 'Closes the specified poll for voting'
 
+
     def handle(self, *args, **options):
+        try:
+            handleUnWrapped(self, args, options)
+        except:
+            logging.error('Error processing press %s' % , sys.exc_info()[0])
+            
+
+    def handleUnWrapped(self, *args, **options):
         
         shortCutMgr = JukeboxShortCutManager()
         configMgr = ConfigManager()
