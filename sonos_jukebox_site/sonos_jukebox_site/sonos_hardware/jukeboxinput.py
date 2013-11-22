@@ -5,18 +5,24 @@ import RPi.GPIO as GPIO
 from time import sleep
 
 
+class JukeboxSignalCallback(object):
+    def Signalled(self):
+        raise NotImplementedError()
+        pass
 
 class JukeboxSignalManager(threading.Thread):
 
     run = True
     breadBoard = None
     IOInitialised = False
+    callback = None
     
-    def __init__(self):
+    def __init__(self, jukeboxCallback):
         super(JukeboxSignalManager, self).__init__()
         try:
             self.breadBoard = BreadBoardInput()
             self.IOInitialised = True
+            self.callback = jukeboxCallback
         except:
             logging.error( 'GPIO Failed')
             
@@ -35,6 +41,7 @@ class JukeboxSignalManager(threading.Thread):
         while JukeboxSignalManager.run:
             if self.breadBoard.KeyInputIsSignalled() and currentSignalState == False:
                 currentSignalState = True
+                callback.Signalled();
                 logging.info("Recieved Signal On")
             
 
@@ -52,6 +59,9 @@ class JukeboxSignalManager(threading.Thread):
 
 
 
+class TestSignalCallback(JukeboxSignalCallback):
+    def Signalled(self):
+        logging.info("Jukebox callback recieved")
 
 if __name__ == "__main__":
     
@@ -62,7 +72,8 @@ if __name__ == "__main__":
     console.setFormatter(formatter)
     logging.getLogger('').addHandler(console)
 
-    ps = JukeboxSignalManager()
+    cb = TestSignalCallback()
+    ps = JukeboxSignalManager(cb)
     ps.start()
     sleep(10)
     ps.stopProcessing()
