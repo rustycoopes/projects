@@ -32,8 +32,8 @@ class JukeboxService(JukeboxSignalCallback):
     
     signalLock = None
     
-    def __init__(self, jukeboxCallback):
-        super(JukeboxSignalManager, self).__init__()
+    def __init__(self):
+        super(JukeboxService, self).__init__()
         try:
             self.signalManager = JukeboxSignalManager(self)
             self.keyProcessor = JukeboxKeyProcessor()
@@ -43,7 +43,7 @@ class JukeboxService(JukeboxSignalCallback):
             logging.error( 'GPIO Failed')
 
 
-    def run(self):
+    def Run(self):
         while 1:
             sleep(.25)
             keyPress =  self.SignalsToKeyUpdater()
@@ -61,17 +61,17 @@ class JukeboxService(JukeboxSignalCallback):
         logging.info("Aquiring lock on train counters for incrementing")
         signalLock.aquire()
         
-        if self.letterTrainCounter == SIGNAL_NOT_SET:
+        if self.letterTrainCounter == self.SIGNAL_NOT_SET:
             logging.info("Start of new button press - starting the letter count")
             self.letterTrainCounter = 1
-        elif timeSinceLastSignal.seconds >= MAX_INTRA_TRAIN_GAP and timeSinceLastSignal.seconds <= MAX_MID_TRAIN_GAP:
+        elif timeSinceLastSignal.seconds >= self.MAX_INTRA_TRAIN_GAP and timeSinceLastSignal.seconds <= self.MAX_MID_TRAIN_GAP:
             logging.info(" 1-3 sec delay is starting number train")
             self.numberTrainCounter = 1
-        elif timeSinceLastSignal.seconds < MAX_INTRA_TRAIN_GAP:
-            if self.numberTrainCounter == SIGNAL_NOT_SET :
+        elif timeSinceLastSignal.seconds < self.MAX_INTRA_TRAIN_GAP:
+            if self.numberTrainCounter == self.SIGNAL_NOT_SET :
                 logging.info("Incrementing letter train")
                 self.letterTrainCounter = self.letterTrainCounter + 1
-            elif
+            else:
                 logging.info("Incrementing number train")
                 self.numberTrainCounter = self.numberTrainCounter + 1
 
@@ -79,7 +79,7 @@ class JukeboxService(JukeboxSignalCallback):
 
     def SignalsToKeyUpdater(self):
         
-        if self.letterTrainCounter != SIGNAL_NOT_SET and self.numberTrainCounter != SIGNAL_NOT_SET and self.timeSinceLastSignal.seconds > MAX_MID_TRAIN_GAP:
+        if self.letterTrainCounter != self.SIGNAL_NOT_SET and self.numberTrainCounter != self.SIGNAL_NOT_SET and self.timeSinceLastSignal.seconds > self.MAX_MID_TRAIN_GAP:
             logging.info("Signals ready to process")
         
             logging.info("Aquiring lock on train counters for resetting")
@@ -87,8 +87,8 @@ class JukeboxService(JukeboxSignalCallback):
             si = SignalInterpretor()
             currentKey = si.Interpret(sel.letterTrainCounter, self.numberTrainCounter)
         
-            self.letterTrainCounter = SIGNAL_NOT_SET
-            self.numberTrainCounter = SIGNAL_NOT_SET
+            self.letterTrainCounter = self.SIGNAL_NOT_SET
+            self.numberTrainCounter = self.SIGNAL_NOT_SET
             signalLock.release()
             return currentKey
         else:
