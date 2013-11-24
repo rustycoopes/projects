@@ -46,6 +46,7 @@ class JukeboxService(JukeboxSignalCallback):
 
 
     def Run(self):
+        logging.info( 'Jukebox Service running')
         while 1:
             sleep(.25)
             keyPress =  self.SignalsToKeyUpdater()
@@ -109,8 +110,10 @@ class Command(BaseCommand):
     help = 'Closes the specified poll for voting'
 
     def handle(self, *args, **options):
+        logging.info( 'Service command starting')
         svc = JukeboxService()
         svc.Run()
+        logging.info( 'Service command ending')
      
 
 
