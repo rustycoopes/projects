@@ -1,4 +1,5 @@
 import logging
+import sys
 import threading
 from breadboardlights import BreadBoardLights
 import RPi.GPIO as GPIO
@@ -24,7 +25,7 @@ class ProgramStatusManager(threading.Thread):
             self.breadBoard = BreadBoardLights()
             self.IOInitialised = True
         except:
-            logging.error( 'GPIO Failed')
+            logging.error('Error initialising GPIO for output - status lights %s' % sys.exc_info()[1])
             
 
     @staticmethod

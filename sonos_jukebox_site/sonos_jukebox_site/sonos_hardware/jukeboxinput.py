@@ -1,4 +1,5 @@
 import logging
+import sys
 import threading
 from breadboardinputs import BreadBoardInput
 import RPi.GPIO as GPIO
@@ -10,7 +11,7 @@ class JukeboxSignalCallback(object):
         raise NotImplementedError()
         pass
 
-class JukeboxSignalManager(threading.Thread):
+class JukeboxSignalReceiver(threading.Thread):
 
     run = True
     breadBoard = None
@@ -18,13 +19,13 @@ class JukeboxSignalManager(threading.Thread):
     callback = None
     
     def __init__(self, jukeboxCallback):
-        super(JukeboxSignalManager, self).__init__()
+        super(JukeboxSignalReceiver, self).__init__()
         try:
             self.breadBoard = BreadBoardInput()
             self.IOInitialised = True
             self.callback = jukeboxCallback
         except:
-            logging.error( 'GPIO Failed')
+            logging.error('Error initialising GPIO for input %s' % sys.exc_info()[1])
             
 
 
@@ -33,12 +34,12 @@ class JukeboxSignalManager(threading.Thread):
         if self.IOInitialised == False:
             return
 
-        JukeboxSignalManager.run = True
+        JukeboxSignalReceiver.run = True
         logging.info( 'Hardware Input Manager running')
         
         currentSignalState = False
         
-        while JukeboxSignalManager.run:
+        while JukeboxSignalReceiver.run:
             if self.breadBoard.KeyInputIsSignalled() and currentSignalState == False:
                 currentSignalState = True
                 self.callback.Signalled();
@@ -55,7 +56,7 @@ class JukeboxSignalManager(threading.Thread):
     @staticmethod
     def stopProcessing():
         logging.info( 'stopping hardware input monitor')
-        JukeboxSignalManager.run = False
+        JukeboxSignalReceiver.run = False
 
 
 
@@ -73,7 +74,7 @@ if __name__ == "__main__":
     logging.getLogger('').addHandler(console)
 
     cb = TestSignalCallback()
-    ps = JukeboxSignalManager(cb)
+    ps = JukeboxSignalReceiver(cb)
     ps.start()
     sleep(10)
     ps.stopProcessing()

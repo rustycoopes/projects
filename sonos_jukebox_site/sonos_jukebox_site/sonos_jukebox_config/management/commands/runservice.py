@@ -6,18 +6,19 @@ Created on Oct 19, 2013
 import logging
 import datetime
 import threading
+import sys
 from time import sleep
 from django.core.management.base import BaseCommand, CommandError
 from sonos_jukebox_config.models import ConfigManager
 from sonos_jukebox_config.models import JukeboxShortCutManager
 from sonos_pandora.sonos_pandora import SonosForPandora
-from sonos_hardware.jukeboxinput import JukeboxSignalManager
+from sonos_hardware.jukeboxinput import JukeboxSignalReceiver
 from sonos_hardware.jukeboxinput import JukeboxSignalCallback
 from sonos_jukebox_config.buttonpressprocessor import JukeboxKeyProcessor
 
 class JukeboxService(JukeboxSignalCallback):
 
-    signalManager = None
+    signalReceiver = None
     keyProcessor = None
     currentKey = None
     currentKeyUpdateTime = None
@@ -35,12 +36,12 @@ class JukeboxService(JukeboxSignalCallback):
     def __init__(self):
         super(JukeboxService, self).__init__()
         try:
-            self.signalManager = JukeboxSignalManager(self)
+            self.signalReceiver = JukeboxSignalReceiver(self)
             self.keyProcessor = JukeboxKeyProcessor()
-            self.signalManager.start()
-            self.lastSignalTime = datetime.now()
+            self.signalReceiver.start()
+            self.signalReceiver = datetime.datetime.now()
         except:
-            logging.error( 'GPIO Failed')
+            logging.error('Error initialising jukebox service %s' % sys.exc_info()[1])
 
 
     def Run(self):
@@ -56,7 +57,7 @@ class JukeboxService(JukeboxSignalCallback):
     def Signalled(self):
         logging.info( 'Received signal')
         
-        timeSinceLastSignal = lastSignalTime - datetime.now()
+        timeSinceLastSignal = self.lastSignalTime - datetime.datetime.now()
 
         logging.info("Aquiring lock on train counters for incrementing")
         signalLock.aquire()
