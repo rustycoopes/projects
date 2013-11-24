@@ -94,6 +94,8 @@ class JukeboxService(JukeboxSignalCallback):
             self.letterTrainCounter = self.SIGNAL_NOT_SET
             self.numberTrainCounter = self.SIGNAL_NOT_SET
             self.signalLock.release()
+            return None
+        
         elif self.letterTrainCounter != self.SIGNAL_NOT_SET and self.numberTrainCounter != self.SIGNAL_NOT_SET and self.timeSinceLastSignal.seconds > self.MAX_MID_TRAIN_GAP:
             logging.info("Signals ready to process")
         
