@@ -39,7 +39,8 @@ class JukeboxService(JukeboxSignalCallback):
             self.signalReceiver = JukeboxSignalReceiver(self)
             self.keyProcessor = JukeboxKeyProcessor()
             self.signalReceiver.start()
-            self.signalReceiver = datetime.datetime.now()
+            self.lastSignalTime = datetime.datetime.now()
+            self.signalLock = Lock()
         except:
             logging.error('Error initialising jukebox service %s' % sys.exc_info()[1])
 
@@ -60,7 +61,7 @@ class JukeboxService(JukeboxSignalCallback):
         timeSinceLastSignal = self.lastSignalTime - datetime.datetime.now()
 
         logging.info("Aquiring lock on train counters for incrementing")
-        signalLock.aquire()
+        self.signalLock.aquire()
         
         if self.letterTrainCounter == self.SIGNAL_NOT_SET:
             logging.info("Start of new button press - starting the letter count")
@@ -76,7 +77,7 @@ class JukeboxService(JukeboxSignalCallback):
                 logging.info("Incrementing number train")
                 self.numberTrainCounter = self.numberTrainCounter + 1
 
-        signalLock.release()
+        self.signalLock.release()
 
     def SignalsToKeyUpdater(self):
         
@@ -84,13 +85,13 @@ class JukeboxService(JukeboxSignalCallback):
             logging.info("Signals ready to process")
         
             logging.info("Aquiring lock on train counters for resetting")
-            signalLock.aquire()
+            self.signalLock.aquire()
             si = SignalInterpretor()
             currentKey = si.Interpret(sel.letterTrainCounter, self.numberTrainCounter)
         
             self.letterTrainCounter = self.SIGNAL_NOT_SET
             self.numberTrainCounter = self.SIGNAL_NOT_SET
-            signalLock.release()
+            self.signalLock.release()
             return currentKey
         else:
             return None
