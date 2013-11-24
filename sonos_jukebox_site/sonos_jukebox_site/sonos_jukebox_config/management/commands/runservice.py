@@ -85,6 +85,9 @@ class JukeboxService(JukeboxSignalCallback):
         self.signalLock.release()
 
     def SignalsToKeyUpdater(self):
+        
+        timeSinceLastSignal = datetime.datetime.now() - self.lastSignalTime
+        
         if timeSinceLastSignal.seconds <= self.MAX_RESTART_PRESS:
             logging.info("Aquiring lock on train counters for resetting TIMEOUT")
             self.signalLock.acquire()
