@@ -48,13 +48,14 @@ class JukeboxService(JukeboxSignalCallback):
 
     def Run(self):
         logging.info( 'Jukebox Service running')
+        self.lastSignalTime = datetime.datetime.now()
         while 1:
             sleep(.25)
             keyPress =  self.SignalsToKeyUpdater()
 
             if keyPress != None :
                 logging.info( 'Key press waiting to be processed.  Sending to processor')
-                self.keyProcessor.Process(keyPress)
+                self.keyProcessor.ProcessKey(keyPress)
 
 
     def Signalled(self):
@@ -74,11 +75,11 @@ class JukeboxService(JukeboxSignalCallback):
             self.numberTrainCounter = 1
         elif timeSinceLastSignal.seconds < self.MAX_INTRA_TRAIN_GAP:
             if self.numberTrainCounter == self.SIGNAL_NOT_SET :
-                logging.info("Incrementing letter train")
                 self.letterTrainCounter = self.letterTrainCounter + 1
+                logging.info("Incrementing letter train, now %s" % self.letterTrainCounter)
             else:
-                logging.info("Incrementing number train")
                 self.numberTrainCounter = self.numberTrainCounter + 1
+                logging.info("Incrementing number train, now %s" % self.numberTrainCounter)
         else:
             logging.info("Ignored press %s seconds since last" % timeSinceLastSignal.seconds)
         self.lastSignalTime = datetime.datetime.now()
@@ -88,7 +89,7 @@ class JukeboxService(JukeboxSignalCallback):
         
         timeSinceLastSignal = datetime.datetime.now() - self.lastSignalTime
         
-        if timeSinceLastSignal.seconds <= self.MAX_RESTART_PRESS:
+        if timeSinceLastSignal.seconds > self.MAX_RESTART_PRESS and self.letterTrainCounter != self.SIGNAL_NOT_SET:
             logging.info("Aquiring lock on train counters for resetting TIMEOUT")
             self.signalLock.acquire()
             self.letterTrainCounter = self.SIGNAL_NOT_SET
@@ -96,13 +97,13 @@ class JukeboxService(JukeboxSignalCallback):
             self.signalLock.release()
             return None
         
-        elif self.letterTrainCounter != self.SIGNAL_NOT_SET and self.numberTrainCounter != self.SIGNAL_NOT_SET and self.timeSinceLastSignal.seconds > self.MAX_MID_TRAIN_GAP:
+        elif self.letterTrainCounter != self.SIGNAL_NOT_SET and self.numberTrainCounter != self.SIGNAL_NOT_SET and timeSinceLastSignal.seconds > self.MAX_MID_TRAIN_GAP:
             logging.info("Signals ready to process")
         
             logging.info("Aquiring lock on train counters for resetting")
             self.signalLock.acquire()
             si = SignalInterpretor()
-            currentKey = si.Interpret(sel.letterTrainCounter, self.numberTrainCounter)
+            currentKey = si.Interpret(self.letterTrainCounter, self.numberTrainCounter)
         
             self.letterTrainCounter = self.SIGNAL_NOT_SET
             self.numberTrainCounter = self.SIGNAL_NOT_SET
