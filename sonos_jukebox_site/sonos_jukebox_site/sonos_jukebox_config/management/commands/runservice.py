@@ -14,7 +14,9 @@ from sonos_jukebox_config.models import JukeboxShortCutManager
 from sonos_pandora.sonos_pandora import SonosForPandora
 from sonos_hardware.jukeboxinput import JukeboxSignalReceiver
 from sonos_hardware.jukeboxinput import JukeboxSignalCallback
+from sonos_jukebox_config.splashscreen import SplashScreen
 from sonos_jukebox_config.buttonpressprocessor import JukeboxKeyProcessor
+from sonos_hardware.statuslcd import ProgramStatusScreenManager
 
 class JukeboxService(JukeboxSignalCallback):
 
@@ -22,6 +24,7 @@ class JukeboxService(JukeboxSignalCallback):
     keyProcessor = None
     currentKey = None
     currentKeyUpdateTime = None
+    splash = None
     
     letterTrainCounter = 0
     numberTrainCounter = 0
@@ -37,6 +40,7 @@ class JukeboxService(JukeboxSignalCallback):
     def __init__(self):
         super(JukeboxService, self).__init__()
         try:
+            self.splash = SplashScreen()
             self.signalReceiver = JukeboxSignalReceiver(self)
             self.keyProcessor = JukeboxKeyProcessor()
             self.signalReceiver.start()
@@ -49,6 +53,9 @@ class JukeboxService(JukeboxSignalCallback):
     def Run(self):
         logging.info( 'Jukebox Service running')
         self.lastSignalTime = datetime.datetime.now()
+        self.splash.ShowSplash()
+        ProgramStatusScreenManager.updateStatus("Sonos Jukebox", "Ready....")
+        
         while 1:
             sleep(.25)
             keyPress =  self.SignalsToKeyUpdater()
@@ -56,6 +63,7 @@ class JukeboxService(JukeboxSignalCallback):
             if keyPress != None :
                 logging.info( 'Key press waiting to be processed.  Sending to processor')
                 self.keyProcessor.ProcessKey(keyPress)
+                ProgramStatusScreenManager.updateStatus("Sonos Jukebox", "Ready....")
 
 
     def Signalled(self):

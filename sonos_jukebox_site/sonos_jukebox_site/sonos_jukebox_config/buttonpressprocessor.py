@@ -8,33 +8,29 @@ import logging
 from sonos_jukebox_config.models import ConfigManager
 from sonos_jukebox_config.models import JukeboxShortCutManager
 from sonos_pandora.sonos_pandora import SonosForPandora
-from sonos_hardware.statuslights import ProgramStatusManager
-from sonos_hardware.statuslights import ProgramStatus
-
+from sonos_hardware.statuslcd import ProgramStatusScreenManager
+from time import sleep
 
 
 class JukeboxKeyProcessor(object):
     
-    statusManager = None
     shortCutMgr = None
     configMgr = None
     sonosPlayer = None
     
     def __init__(self):
-        self.statusManager = ProgramStatusManager()
-        self.statusManager.start()
         self.shortCutMgr = JukeboxShortCutManager()
         self.configMgr = ConfigManager()
         self.sonosPlayer = SonosForPandora()
-        ProgramStatusManager.updateStatus(ProgramStatus.Waiting)
-    
+   
     def ProcessKey(self, shortCutKeys):
-        
-        
         logging.info('Sent short cut "%s"' % shortCutKeys)
-        ProgramStatusManager.updateStatus(ProgramStatus.ReceivedKeys)
+
+        ProgramStatusScreenManager.updateStatus("Keys Received", shortCutKeys)
+
         shortCut = self.shortCutMgr.getShortCut(shortCutKeys)
         
+        ProgramStatusScreenManager.updateStatus("Shortcut", shortCut.track )
         if shortCut != None:
             
             speakerConfig = self.configMgr.getConifgItem( "TARGET_SPEAKER")
@@ -49,8 +45,13 @@ class JukeboxKeyProcessor(object):
             
             else:
                 logging.error('Unsupported shortcut type %s' % shortCut.type )
+                ProgramStatusScreenManager.updateStatus("ERROR", "UNK:" % shortCut.type )
+                sleep(5)
             
-            ProgramStatusManager.updateStatus(ProgramStatus.Waiting)
+            ProgramStatusScreenManager.updateStatus("Sonos Jukebox", "Ready....")
         
         else:
             logging.error('Shortcut not found for %s' % shortCutKeys )
+            ProgramStatusScreenManager.updateStatus("ERROR", "UNK:" % shortCutKeys )
+            sleep(5)
+

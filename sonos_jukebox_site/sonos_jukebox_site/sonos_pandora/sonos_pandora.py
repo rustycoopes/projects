@@ -4,8 +4,7 @@ from soco import SoCo
 from soco import SonosDiscovery
 from russpandora import RussPandora
 import logging
-from sonos_hardware.statuslights import ProgramStatusManager
-from sonos_hardware.statuslights import ProgramStatus
+from sonos_hardware.statuslcd import ProgramStatusScreenManager
 
 
 class SonosForPandora(object):
@@ -22,10 +21,10 @@ class SonosForPandora(object):
     
     def playStation(self, stationNameLike, onSpeakerLike): 
   
-        ProgramStatusManager.updateStatus(ProgramStatus.LoadingMusicInfo)
+        ProgramStatusScreenManager.updateStatus("Pandora", "Loading music")
         stationId = self.rpandora.getIdForStation(stationNameLike)
-        
-        ProgramStatusManager.updateStatus(ProgramStatus.CallingSonos)
+        stationName = self.rpandora.getNameForStation(stationNameLike)
+   
         for speakerIp in self.sonos.get_speaker_ips():
             try:
                 sonosSpeaker = SoCo(str(speakerIp))
@@ -33,6 +32,7 @@ class SonosForPandora(object):
                 if onSpeakerLike in all_info['zone_name'] :
                     logging.info("Playing on speaker %s" % str(speakerIp))
                     sonosSpeaker.play_uri("pndrradio:%s" % str(stationId), '')
+                    ProgramStatusScreenManager.updateStatus("Pl: %s"  % stationName, "On %s" % all_info['zone_name'] )
                 else:
                     logging.info('Skipping player "%s"' % all_info['zone_name'])
             except:
@@ -46,6 +46,7 @@ class SonosForPandora(object):
             for item in all_info:
                 logging.info("Stopping for speaker %s: %s" % (item, all_info[item]))
             sonos.stop()
+            ProgramStatusScreenManager.updateStatus("Sonos" , "Music Stopped" )
 
 
     def listAll(self):

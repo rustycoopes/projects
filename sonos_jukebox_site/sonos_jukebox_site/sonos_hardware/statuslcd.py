@@ -25,17 +25,30 @@ class ProgramStatusScreenManager(threading.Thread):
         self.lcd.clear()
         self.lcd.message(line1Text + '\n' + line2Text)
         logging.info( 'Message set to "%s"' % line1Text, line2Text)
-    
+
+    def screenOn(self):
+        self.lcd.clear()
+        self.lcd.backlight(lcd.ON)
+        ProgramStatusScreenManager.screenOn = True
+        logging.info( 'LCD light turned on')
+
+    def screenOff(self):
+        self.lcd.clear()
+        self.lcd.backlight(lcd.OFF)
+        ProgramStatusScreenManager.screenOn = False
+        logging.info( 'LCD light turned off')
+        
+
     def run(self):
         logging.info( 'Hardware Status Manager running')
         while 1:
-            if self.lcd.buttonPressed(lcd.SELECT) && ProgramStatusScreenManager.screenOn:
+            if self.lcd.buttonPressed(lcd.SELECT) and ProgramStatusScreenManager.screenOn:
                 self.lcd.backlight(lcd.OFF)
                 ProgramStatusScreenManager.screenOn = True
-            elif lcd.buttonPressed(lcd.SELECT) && ProgramStatusScreenManager.screenOn != True:
+            elif lcd.buttonPressed(lcd.SELECT) and ProgramStatusScreenManager.screenOn != True:
                 self.lcd.backlight(lcd.ON)
                 ProgramStatusScreenManager.screenOn = False
-            sleep(.25)
+          
 
     @staticmethod
     def stopProcessing():

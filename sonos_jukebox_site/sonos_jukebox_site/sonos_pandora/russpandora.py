@@ -39,7 +39,28 @@ class RussPandora(object):
         
         logging.error(  'error no station found')
         return -1
+
+    def getNameForStation(self, stationNameLike):
         
+        if self.stationList == None:
+            logging.info( "logging into pandora")
+            russPandora = Pandora()
+            username = "russell.cooper@btinternet.com"
+            password = "cooperman"
+            russPandora.authenticate(username, password)
+            logging.info(  "loading station list")
+            self.stationList = russPandora.get_station_list()
+            logging.info(  "station list loaded ")
+        
+        for station in self.stationList:
+            if stationNameLike in station['stationName']:
+                logging.info( 'found track "%s"' % station['stationName'])
+                return station['stationName']
+        
+        
+        logging.error(  'error no station found')
+        return -1
+
         
        
 if __name__ == "__main__":
