@@ -1,24 +1,30 @@
-'''
-Created on Oct 19, 2013
 
-@author: rusty
-'''
 import logging
 
-from sonos_hardware.statuslcd import ProgramStatusScreenManager
+from sonos_hardware.statuslcd import LCDScreen
 from time import sleep
+
+
+# ----------------------------------------------------------------------------------------
+# Class purpose
+#    To act as the splash screen on start up
+#    IMPORTANTLY this has a side effect of performing screen intitialisation as its the only part
+#    of the program that creads an LCD screen instance, and therefore calls the constructor
+# ----------------------------------------------------------------------------------------
 
 class SplashScreen(object):
 
     statusManager = None
     
     def __init__(self):
-        self.statusManager = ProgramStatusScreenManager()
+        self.statusManager = LCDScreen()
         self.statusManager.start()
 
     def ShowSplash(self):
-        ProgramStatusScreenManager.updateStatus("Sonos Jukebox", "Russ Cooper")
-        sleepe(1)
-        ProgramStatusScreenManager.updateStatus("Sonos Jukebox", "Starting....")
+        LCDScreen.screenOn()
+        LCDScreen.updateStatus("Sonos Jukebox", "Russ Cooper")
         sleep(1)
+        LCDScreen.updateStatus("Sonos Jukebox", "Starting....")
+        sleep(1)
+        LCDScreen.screenOff()
 

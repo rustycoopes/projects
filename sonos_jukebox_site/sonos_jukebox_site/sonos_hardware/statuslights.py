@@ -5,6 +5,10 @@ from breadboardlights import BreadBoardLights
 import RPi.GPIO as GPIO
 from time import sleep
 
+#----------------------------------------------------------------------------------------
+# Class Purpose
+#   REPLACED BY LCD
+# ----------------------------------------------------------------------------------------
 class ProgramStatus(object):
     NotRunning=0
     Waiting = 1

@@ -1,36 +1,43 @@
-'''
-Created on Oct 19, 2013
-
-@author: rusty
-'''
 import logging
 
 from sonos_jukebox_config.models import ConfigManager
 from sonos_jukebox_config.models import JukeboxShortCutManager
 from sonos_pandora.sonos_pandora import SonosForPandora
-from sonos_hardware.statuslcd import ProgramStatusScreenManager
+from sonos_hardware.statuslcd import LCDScreen
 from time import sleep
 
-
+# ----------------------------------------------------------------------------------------
+# Class purpose
+#    Looks after the co-ordination betweek getting a key press and then telling the music
+#    System what to do with it
+# ----------------------------------------------------------------------------------------
 class JukeboxKeyProcessor(object):
     
+    # Gets the config mapping for a short cut, from its string value (i.e. value and type of track).
     shortCutMgr = None
+    # Gets system config e.g. what speaker to play on
     configMgr = None
+    # Interface into sonos.
     sonosPlayer = None
     
     def __init__(self):
         self.shortCutMgr = JukeboxShortCutManager()
         self.configMgr = ConfigManager()
         self.sonosPlayer = SonosForPandora()
-   
+        
+    # ----------------------------------------------------------------------------------------
+    # Process a key press, get the track and play it on the sonos box
+    # ----------------------------------------------------------------------------------------
     def ProcessKey(self, shortCutKeys):
         logging.info('Sent short cut "%s"' % shortCutKeys)
 
-        ProgramStatusScreenManager.updateStatus("Keys Received", shortCutKeys)
+        LCDScreen.updateStatus("Keys Received", shortCutKeys)
 
         shortCut = self.shortCutMgr.getShortCut(shortCutKeys)
         
-        ProgramStatusScreenManager.updateStatus("Shortcut", shortCut.track )
+        LCDScreen.updateStatus("Shortcut", shortCut.track )
+        
+        # Is this a known shortcut?
         if shortCut != None:
             
             speakerConfig = self.configMgr.getConifgItem( "TARGET_SPEAKER")
@@ -38,6 +45,7 @@ class JukeboxKeyProcessor(object):
             logging.info('Short cut track is"%s" running from "%s"' % (shortCut.track, shortCut.type))
             logging.info('Successfully read speaker to send to as "%s"' % (speakerConfig.value))
             
+            # tell sonos how to play its shortcut
             if shortCut.type =="Pandora":
                 
                 self.sonosPlayer = SonosForPandora()
@@ -45,13 +53,13 @@ class JukeboxKeyProcessor(object):
             
             else:
                 logging.error('Unsupported shortcut type %s' % shortCut.type )
-                ProgramStatusScreenManager.updateStatus("ERROR", "UNK:" % shortCut.type )
+                LCDScreen.updateStatus("ERROR", "UNK:" % shortCut.type )
                 sleep(5)
             
-            ProgramStatusScreenManager.updateStatus("Sonos Jukebox", "Ready....")
+            LCDScreen.updateStatus("Sonos Jukebox", "Ready....")
         
         else:
             logging.error('Shortcut not found for %s' % shortCutKeys )
-            ProgramStatusScreenManager.updateStatus("ERROR", "UNK:" % shortCutKeys )
+            LCDScreen.updateStatus("ERROR", "UNK:" % shortCutKeys )
             sleep(5)
 

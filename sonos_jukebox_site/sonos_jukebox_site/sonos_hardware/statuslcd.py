@@ -5,18 +5,25 @@ import RPi.GPIO as GPIO
 from time import sleep
 from Adafruit_CharLCDPlate import Adafruit_CharLCDPlate
 
-class ProgramStatusScreenManager(threading.Thread):
 
+# ----------------------------------------------------------------------------------------
+# Class Purpose
+#   Provides an interface into the LCD.  Able to turn on and off, and write text.
+#   Thread is created to recieve the button presses to turn on and off the light.
+# ----------------------------------------------------------------------------------------
+class LCDScreen(threading.Thread):
+
+    # State of the light, we cannot ask the hardware this
     screenOn = True
+    # link to the hardware
     lcd = None
-    IOInitialised = False
     
     def __init__(self):
-        super(ProgramStatusScreenManager, self).__init__()
+        super(LCDScreen, self).__init__()
         self.lcd = Adafruit_CharLCDPlate()
         self.lcd.clear()
         self.lcd.backlight(lcd.OFF)
-        ProgramStatusScreenManager.screenOn = False
+        LCDScreen.screenOn = False
         logging.info('screen status manager created')
             
 
@@ -29,25 +36,27 @@ class ProgramStatusScreenManager(threading.Thread):
     def screenOn(self):
         self.lcd.clear()
         self.lcd.backlight(lcd.ON)
-        ProgramStatusScreenManager.screenOn = True
+        LCDScreen.screenOn = True
         logging.info( 'LCD light turned on')
 
     def screenOff(self):
         self.lcd.clear()
         self.lcd.backlight(lcd.OFF)
-        ProgramStatusScreenManager.screenOn = False
+        LCDScreen.screenOn = False
         logging.info( 'LCD light turned off')
         
-
+    # Purpose of the thread start is to capture button selections to turn light on and off.
     def run(self):
         logging.info( 'Hardware Status Manager running')
         while 1:
-            if self.lcd.buttonPressed(lcd.SELECT) and ProgramStatusScreenManager.screenOn:
+            # Select pressed and screeen was already on
+            if self.lcd.buttonPressed(lcd.SELECT) and LCDScreen.screenOn:
                 self.lcd.backlight(lcd.OFF)
-                ProgramStatusScreenManager.screenOn = True
-            elif lcd.buttonPressed(lcd.SELECT) and ProgramStatusScreenManager.screenOn != True:
+                LCDScreen.screenOn = True
+            # Select pressed and screen was off !
+            elif lcd.buttonPressed(lcd.SELECT) and LCDScreen.screenOn != True:
                 self.lcd.backlight(lcd.ON)
-                ProgramStatusScreenManager.screenOn = False
+                LCDScreen.screenOn = False
           
 
     @staticmethod
@@ -55,11 +64,12 @@ class ProgramStatusScreenManager(threading.Thread):
         logging.info( 'stopping hardware status monitor')
         self.lcd.clear()
         self.lcf.backlight(lcd.OFF)
-        ProgramStatusScreenManager.screenOn = False
+        LCDScreen.screenOn = False
 
 
-
-
+#---------------------------------------------
+# TEST MAIN METHOD
+#---------------------------------------------
 if __name__ == "__main__":
     
     logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(name)-12s %(levelname)-8s %(message)s', datefmt='%m-%d %H:%M', filename='sonos-jukebox-server.log', filemode='w')
@@ -69,8 +79,11 @@ if __name__ == "__main__":
     console.setFormatter(formatter)
     logging.getLogger('').addHandler(console)
 
+    # Just write out some text and and ensure the thread start works to accept button presses
+    # 3 SECONDS TO CAPTURE USER SELECTS!!!
     ProgramStatusManager.updateStatus("Running", "")
     ps = ProgramStatusManager()
+    ps.screenOn()
     ps.start()
     sleep(1)
     ProgramStatusManager.updateStatus("Key Pressed", "A1")

@@ -1,5 +1,10 @@
 import RPi.GPIO as GPIO
 
+# ----------------------------------------------------------------------
+# Class Purpose
+#   Provide abstraction from the GPIO setup and config - including pin.
+#   Allows user to toggle names lights on and off.
+# ----------------------------------------------------------------------
 class BreadBoardLights(object):
 
     def __init__(self):

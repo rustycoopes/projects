@@ -12,9 +12,8 @@ from sonos_pandora.sonos_pandora import SonosForPandora
 from sonos_hardware.statuslights import ProgramStatusManager
 from sonos_hardware.statuslights import ProgramStatus
 from sonos_jukebox_config.buttonpressprocessor import JukeboxKeyProcessor
-from sonos_hardware.statuslcd import ProgramStatusScreenManager
 from sonos_jukebox_config.splashscreen import SplashScreen
-f
+
 
 
 class Command(BaseCommand):
@@ -32,5 +31,5 @@ class Command(BaseCommand):
                 keyProcessor.ProcessKey(shortCutKeys)
         except:
             logging.error('Error processing press %s' % sys.exc_info()[1])
-            
+            LCDScreen.updateStatus("ERROR",  sys.exc_info()[1] )  
 
