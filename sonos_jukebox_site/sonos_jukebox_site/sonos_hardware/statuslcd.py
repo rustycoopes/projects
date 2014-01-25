@@ -32,12 +32,12 @@ class LCDScreen(threading.Thread):
         logging.info( 'Message set to "%s"' % line1Text, line2Text)
 
     def screenOn(self):
-        LCDScreen.lcd.backlight(lcd.ON)
+        LCDScreen.lcd.backlight(LCDScreen.lcd.ON)
         LCDScreen.isScreenOn = True
         logging.info( 'LCD light turned on')
 
     def screenOff(self):
-        LCDScreen.lcd.backlight(lcd.OFF)
+        LCDScreen.lcd.backlight(LCDScreen.lcd.OFF)
         LCDScreen.isScreenOn = False
         logging.info( 'LCD light turned off')
         
@@ -74,7 +74,6 @@ if __name__ == "__main__":
 
     # Just write out some text and and ensure the thread start works to accept button presses
     # 3 SECONDS TO CAPTURE USER SELECTS!!!
-    LCDScreen.updateStatus("Running", "")
     ps = LCDScreen()
     ps.screenOn()
     ps.start()
