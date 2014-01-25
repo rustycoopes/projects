@@ -29,7 +29,7 @@ class LCDScreen(threading.Thread):
     def updateStatus(line1Text, line2Text):
         LCDScreen.lcd.clear()
         LCDScreen.lcd.message(line1Text + '\n' + line2Text)
-        logging.info( 'Message set to "%s - %s"' % line1Text, line2Text)
+        logging.info( 'Message set to "%s"' % line1Text)
 
     def screenOn(self):
         LCDScreen.lcd.backlight(LCDScreen.lcd.ON)
@@ -51,7 +51,7 @@ class LCDScreen(threading.Thread):
             # Select pressed and screen was off !
             elif LCDScreen.lcd.buttonPressed(LCDScreen.lcd.SELECT) and LCDScreen.isScreenOn != True:
                 self.screenOn()
-          
+            sleep (.25)   
 
     @staticmethod
     def stopProcessing():
