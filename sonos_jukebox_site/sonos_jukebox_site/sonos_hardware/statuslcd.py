@@ -14,58 +14,51 @@ from Adafruit_CharLCDPlate import Adafruit_CharLCDPlate
 class LCDScreen(threading.Thread):
 
     # State of the light, we cannot ask the hardware this
-    screenOn = True
+    isScreenOn = True
     # link to the hardware
     lcd = None
     
     def __init__(self):
         super(LCDScreen, self).__init__()
-        self.lcd = Adafruit_CharLCDPlate()
-        self.lcd.clear()
-        self.lcd.backlight(lcd.OFF)
-        LCDScreen.screenOn = False
+        LCDScreen.lcd = Adafruit_CharLCDPlate()
+        self.screenOff()
         logging.info('screen status manager created')
             
 
     @staticmethod
     def updateStatus(line1Text, line2Text):
-        self.lcd.clear()
-        self.lcd.message(line1Text + '\n' + line2Text)
+        LCDScreen.lcd.clear()
+        LCDScreen.lcd.message(line1Text + '\n' + line2Text)
         logging.info( 'Message set to "%s"' % line1Text, line2Text)
 
     def screenOn(self):
-        self.lcd.clear()
-        self.lcd.backlight(lcd.ON)
-        LCDScreen.screenOn = True
+        LCDScreen.lcd.backlight(lcd.ON)
+        LCDScreen.isScreenOn = True
         logging.info( 'LCD light turned on')
 
     def screenOff(self):
-        self.lcd.clear()
-        self.lcd.backlight(lcd.OFF)
-        LCDScreen.screenOn = False
+        LCDScreen.lcd.backlight(lcd.OFF)
+        LCDScreen.isScreenOn = False
         logging.info( 'LCD light turned off')
         
     # Purpose of the thread start is to capture button selections to turn light on and off.
     def run(self):
-        logging.info( 'Hardware Status Manager running')
+        logging.info( 'LCD screen on/off manager running')
         while 1:
             # Select pressed and screeen was already on
-            if self.lcd.buttonPressed(lcd.SELECT) and LCDScreen.screenOn:
-                self.lcd.backlight(lcd.OFF)
-                LCDScreen.screenOn = True
+            if LCDScreen.lcd.buttonPressed(LCDScreen.lcd.SELECT) and LCDScreen.isScreenOn:
+                self.screenOff()
             # Select pressed and screen was off !
-            elif lcd.buttonPressed(lcd.SELECT) and LCDScreen.screenOn != True:
-                self.lcd.backlight(lcd.ON)
-                LCDScreen.screenOn = False
+            elif LCDScreen.buttonPressed(LCDScreen.lcd.SELECT) and LCDScreen.isScreenOn != True:
+                self.screenOn()
           
 
     @staticmethod
     def stopProcessing():
-        logging.info( 'stopping hardware status monitor')
-        self.lcd.clear()
-        self.lcf.backlight(lcd.OFF)
-        LCDScreen.screenOn = False
-
+        LCDScreen.lcd.clear()
+        LCDScreen.lcd.backlight(LCDScreen.lcd.OFF)
+        LCDScreen.isScreenOn = False
+        logging.info( 'LCD light turned off')
 
 #---------------------------------------------
 # TEST MAIN METHOD
