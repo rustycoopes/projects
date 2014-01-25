@@ -74,15 +74,15 @@ if __name__ == "__main__":
 
     # Just write out some text and and ensure the thread start works to accept button presses
     # 3 SECONDS TO CAPTURE USER SELECTS!!!
-    ProgramStatusManager.updateStatus("Running", "")
-    ps = ProgramStatusManager()
+    LCDScreen.updateStatus("Running", "")
+    ps = LCDScreen()
     ps.screenOn()
     ps.start()
     sleep(1)
-    ProgramStatusManager.updateStatus("Key Pressed", "A1")
+    LCDScreen.updateStatus("Key Pressed", "A1")
     sleep(1)
-    ProgramStatusManager.updateStatus("Searching Sonos", "Elton")
+    LCDScreen.updateStatus("Searching Sonos", "Elton")
     sleep(1)
-    ProgramStatusManager.stopProcessing()
+    LCDScreen.stopProcessing()
     ps.join()
     print 'ended'
