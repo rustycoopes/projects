@@ -85,23 +85,23 @@ class JukeboxService(JukeboxSignalCallback):
         
         # No previous signal, we are just starting to get one.
         if self.letterTrainCounter == self.SIGNAL_NOT_SET:
-            logging.info("Start of new button press - starting the letter count")
+            logging.info("No previous state - starting letter count = 1")
             self.letterTrainCounter = 1
             self.numberTrainCounter = self.SIGNAL_NOT_SET
             
         # there has been a pause and we have restarted getting signals. this will be the gap between numbers and letters.
         elif timeSinceLastSignal.seconds >= self.MAX_INTRA_TRAIN_GAP and timeSinceLastSignal.seconds <= self.MAX_MID_TRAIN_GAP:
-            logging.info(" 1-3 sec delay is starting number train")
+            logging.info(" 1-3 sec delay between this and last input - starting number count = 1")
             self.numberTrainCounter = 1
         
         # timeout.. either we have read everything or not - nothing else if happening.
         elif timeSinceLastSignal.seconds < self.MAX_INTRA_TRAIN_GAP:
             if self.numberTrainCounter == self.SIGNAL_NOT_SET :
                 self.letterTrainCounter = self.letterTrainCounter + 1
-                logging.info("Incrementing letter train, now %s" % self.letterTrainCounter)
+                logging.info("Incrementing letter count, now %s" % self.letterTrainCounter)
             else:
                 self.numberTrainCounter = self.numberTrainCounter + 1
-                logging.info("Incrementing number train, now %s" % self.numberTrainCounter)
+                logging.info("Incrementing number count, now %s" % self.numberTrainCounter)
         
         else:
             logging.info("Ignored press %s seconds since last" % timeSinceLastSignal.seconds)
@@ -123,7 +123,7 @@ class JukeboxService(JukeboxSignalCallback):
         
         # Read timed out we have numbers but no letters- ignore data.
         if timeSinceLastSignal.seconds > self.MAX_RESTART_PRESS and self.letterTrainCounter != self.SIGNAL_NOT_SET:
-            logging.info("Aquiring lock on train counters for resetting TIMEOUT")
+            logging.info("Aquiring lock on train counters for resetting number and letter counts due to TIMEOUT (%s secs since last press)" % timeSinceLastSignal.seconds)
             self.signalLock.acquire()
             self.letterTrainCounter = self.SIGNAL_NOT_SET
             self.numberTrainCounter = self.SIGNAL_NOT_SET
@@ -132,9 +132,7 @@ class JukeboxService(JukeboxSignalCallback):
         
         # Data is ready to return. - we have letter and number counts, and we have left enough time to ensure there are no more ocming.
         elif self.letterTrainCounter != self.SIGNAL_NOT_SET and self.numberTrainCounter != self.SIGNAL_NOT_SET and timeSinceLastSignal.seconds > self.MAX_MID_TRAIN_GAP:
-            logging.info("Signals ready to process")
-        
-            logging.info("Aquiring lock on train counters for resetting")
+            logging.info("Signals ready to process !!! - Aquiring lock on train counters for resetting number and letter counts due to them being read")
             self.signalLock.acquire()
             si = SignalInterpretor()
             currentKey = si.Interpret(self.letterTrainCounter, self.numberTrainCounter)
