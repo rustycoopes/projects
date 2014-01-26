@@ -90,12 +90,12 @@ class JukeboxService(JukeboxSignalCallback):
             self.numberTrainCounter = self.SIGNAL_NOT_SET
             
         # there has been a pause and we have restarted getting signals. this will be the gap between numbers and letters.
-        elif timeSinceLastSignal.seconds >= self.MAX_INTRA_TRAIN_GAP and timeSinceLastSignal.seconds <= self.MAX_MID_TRAIN_GAP:
+        elif timeSinceLastSignal.total_seconds() >= self.MAX_INTRA_TRAIN_GAP and timeSinceLastSignal.total_seconds() <= self.MAX_MID_TRAIN_GAP:
             logging.info(" 1-3 sec delay between this and last input - starting number count = 1")
             self.numberTrainCounter = 1
         
         # timeout.. either we have read everything or not - nothing else if happening.
-        elif timeSinceLastSignal.seconds < self.MAX_INTRA_TRAIN_GAP:
+        elif timeSinceLastSignal.total_seconds() < self.MAX_INTRA_TRAIN_GAP:
             if self.numberTrainCounter == self.SIGNAL_NOT_SET :
                 self.letterTrainCounter = self.letterTrainCounter + 1
                 logging.info("Incrementing letter count, now %s" % self.letterTrainCounter)
