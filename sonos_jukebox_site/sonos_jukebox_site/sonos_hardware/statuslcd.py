@@ -51,7 +51,7 @@ class LCDScreen(threading.Thread):
             # Select pressed and screen was off !
             elif LCDScreen.lcd.buttonPressed(LCDScreen.lcd.SELECT) and LCDScreen.isScreenOn != True:
                 self.screenOn()
-            sleep (.25)   
+            sleep (.5)   
 
     @staticmethod
     def stopProcessing():
