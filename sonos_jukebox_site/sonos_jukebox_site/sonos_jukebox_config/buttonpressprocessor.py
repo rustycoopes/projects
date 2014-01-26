@@ -55,13 +55,13 @@ class JukeboxKeyProcessor(object):
             
             else:
                 logging.error('Unsupported shortcut type %s' % shortCut.type )
-                LCDScreen.updateStatus("ERROR", "UNK: %s" % shortCut.type )
+                LCDScreen.updateStatus("ERROR", "UNK TYPE: %s" % shortCut.type )
                 sleep(5)
             
             LCDScreen.updateStatus("Sonos Jukebox", "Ready....")
         
         else:
             logging.error('Shortcut not found for %s' % shortCutKeys )
-            LCDScreen.updateStatus("ERROR", "UNK: %s" % shortCutKeys )
+            LCDScreen.updateStatus("ERROR", "UNK S/CUT: %s" % shortCutKeys )
             sleep(5)
 
