@@ -119,12 +119,12 @@ class JukeboxService(JukeboxSignalCallback):
     #----------------------------------------------------------------------------
     def SignalsToKeyUpdater(self):
         
+        self.signalLock.acquire()
         timeSinceLastSignal = datetime.datetime.now() - self.lastSignalTime
         
         # Read timed out we have numbers but no letters- ignore data.
         if timeSinceLastSignal.total_seconds() > self.MAX_RESTART_PRESS and self.letterTrainCounter != self.SIGNAL_NOT_SET:
             logging.info("Aquiring lock on train counters for resetting number and letter counts due to TIMEOUT (%s secs since last press)" % timeSinceLastSignal.total_seconds())
-            self.signalLock.acquire()
             self.letterTrainCounter = self.SIGNAL_NOT_SET
             self.numberTrainCounter = self.SIGNAL_NOT_SET
             self.signalLock.release()
@@ -133,7 +133,6 @@ class JukeboxService(JukeboxSignalCallback):
         # Data is ready to return. - we have letter and number counts, and we have left enough time to ensure there are no more ocming.
         elif self.letterTrainCounter != self.SIGNAL_NOT_SET and self.numberTrainCounter != self.SIGNAL_NOT_SET and timeSinceLastSignal.seconds > self.MAX_MID_TRAIN_GAP:
             logging.info("Signals ready to process !!! - Aquiring lock on train counters for resetting number and letter counts due to them being read")
-            self.signalLock.acquire()
             si = SignalInterpretor()
             currentKey = si.Interpret(self.letterTrainCounter, self.numberTrainCounter)
         
@@ -142,6 +141,7 @@ class JukeboxService(JukeboxSignalCallback):
             self.signalLock.release()
             return currentKey
         else:
+            self.signalLock.release()
             return None
 
 
