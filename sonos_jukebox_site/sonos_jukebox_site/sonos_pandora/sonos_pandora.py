@@ -24,6 +24,7 @@ class SonosForPandora(object):
         LCDScreen.updateStatus("Pandora", "Loading music")
         stationId = self.rpandora.getIdForStation(stationNameLike)
         stationName = self.rpandora.getNameForStation(stationNameLike)
+        
         LCDScreen.updateStatus("Pl: %s"  % stationName, "On %s" % onSpeakerLike )
         
         for speakerIp in self.sonos.get_speaker_ips():
