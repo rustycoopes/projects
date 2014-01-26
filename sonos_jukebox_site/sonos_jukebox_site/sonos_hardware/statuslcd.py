@@ -29,7 +29,7 @@ class LCDScreen(threading.Thread):
     def updateStatus(line1Text, line2Text):
         LCDScreen.lcd.clear()
         LCDScreen.lcd.message(line1Text + '\n' + line2Text)
-        logging.info( 'Message set to "%s"' % line1Text)
+        logging.info( 'LCD Message set to "%s"' % line1Text)
 
     def screenOn(self):
         LCDScreen.lcd.backlight(LCDScreen.lcd.ON)
