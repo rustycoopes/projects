@@ -122,8 +122,8 @@ class JukeboxService(JukeboxSignalCallback):
         timeSinceLastSignal = datetime.datetime.now() - self.lastSignalTime
         
         # Read timed out we have numbers but no letters- ignore data.
-        if timeSinceLastSignal.seconds > self.MAX_RESTART_PRESS and self.letterTrainCounter != self.SIGNAL_NOT_SET:
-            logging.info("Aquiring lock on train counters for resetting number and letter counts due to TIMEOUT (%s secs since last press)" % timeSinceLastSignal.seconds)
+        if timeSinceLastSignal.total_seconds() > self.MAX_RESTART_PRESS and self.letterTrainCounter != self.SIGNAL_NOT_SET:
+            logging.info("Aquiring lock on train counters for resetting number and letter counts due to TIMEOUT (%s secs since last press)" % timeSinceLastSignal.total_seconds())
             self.signalLock.acquire()
             self.letterTrainCounter = self.SIGNAL_NOT_SET
             self.numberTrainCounter = self.SIGNAL_NOT_SET
