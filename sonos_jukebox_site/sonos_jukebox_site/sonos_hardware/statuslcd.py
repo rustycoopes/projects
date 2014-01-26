@@ -22,7 +22,7 @@ class LCDScreen(threading.Thread):
         super(LCDScreen, self).__init__()
         LCDScreen.lcd = Adafruit_CharLCDPlate()
         self.screenOff()
-        logging.info('screen status manager created')
+        logging.info('LCD manager created')
             
 
     @staticmethod

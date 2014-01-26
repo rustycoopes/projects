@@ -14,17 +14,17 @@ from time import sleep
 
 class SplashScreen(object):
 
-    statusManager = None
+    lcd = None
     
     def __init__(self):
-        self.statusManager = LCDScreen()
-        self.statusManager.start()
+        self.lcd = LCDScreen()
+        self.lcd.start()
 
     def ShowSplash(self):
-        LCDScreen.screenOn()
+        self.lcd.screenOn()
         LCDScreen.updateStatus("Sonos Jukebox", "Russ Cooper")
         sleep(1)
         LCDScreen.updateStatus("Sonos Jukebox", "Starting....")
         sleep(1)
-        LCDScreen.screenOff()
+        self.lcd.screenOff()
 
