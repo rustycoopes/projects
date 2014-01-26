@@ -26,5 +26,4 @@ class SplashScreen(object):
         sleep(1)
         LCDScreen.updateStatus("Sonos Jukebox", "Starting....")
         sleep(1)
-        self.lcd.screenOff()
 
