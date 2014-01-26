@@ -34,12 +34,11 @@ class JukeboxKeyProcessor(object):
         LCDScreen.updateStatus("Keys Received", shortCutKeys)
 
         shortCut = self.shortCutMgr.getShortCut(shortCutKeys)
-        
-        LCDScreen.updateStatus("Shortcut", shortCut.track )
-        
+                
         # Is this a known shortcut?
         if shortCut != None:
             
+            LCDScreen.updateStatus("Shortcut", shortCut.track )
             speakerConfig = self.configMgr.getConifgItem( "TARGET_SPEAKER")
             
             logging.info('Short cut track is"%s" running from "%s"' % (shortCut.track, shortCut.type))
