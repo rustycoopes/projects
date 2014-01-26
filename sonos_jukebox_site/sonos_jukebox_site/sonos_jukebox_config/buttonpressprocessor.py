@@ -33,8 +33,11 @@ class JukeboxKeyProcessor(object):
 
         LCDScreen.updateStatus("Keys Received", shortCutKeys)
 
-        shortCut = self.shortCutMgr.getShortCut(shortCutKeys)
-                
+        try:
+            shortCut = self.shortCutMgr.getShortCut(shortCutKeys)
+        except:
+            shortCut = None
+            
         # Is this a known shortcut?
         if shortCut != None:
             
