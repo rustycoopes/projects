@@ -14,7 +14,7 @@ class BreadBoardInput(object):
         try:
             GPIO.setmode(GPIO.BOARD)
             GPIO.setup(7, GPIO.IN)
-            IOInitialised = True
+            self.IOInitialised = True
         except:
             logging.error('Error initialising GPIO for input %s' % sys.exc_info()[1])
             

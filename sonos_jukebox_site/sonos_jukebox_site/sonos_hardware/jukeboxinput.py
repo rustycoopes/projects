@@ -46,6 +46,7 @@ class JukeboxSignalReceiver(threading.Thread):
         
         # can happen on exceptions withe the board or no board can be found
         if self.hardware.IsInitialised() == False:
+            logging.info( 'Hardware not ready for input so exiting')
             return
 
         JukeboxSignalReceiver.run = True
