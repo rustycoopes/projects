@@ -22,7 +22,6 @@ class LCDScreen(threading.Thread):
         super(LCDScreen, self).__init__()
         LCDScreen.lcd = Adafruit_CharLCDPlate()
         self.screenOff()
-        LCDScreen.lcd.autoscroll()
         logging.info('LCD manager created')
             
 

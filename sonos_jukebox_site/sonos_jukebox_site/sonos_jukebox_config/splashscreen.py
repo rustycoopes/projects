@@ -22,8 +22,8 @@ class SplashScreen(object):
 
     def ShowSplash(self):
         self.lcd.screenOn()
-        LCDScreen.updateStatus("Sonos Jukebox", "Russ Cooper")
-        sleep(1)
+        LCDScreen.updateStatus("Sonos Jukebox", "Coopes 2014")
+        sleep(2)
         LCDScreen.updateStatus("Sonos Jukebox", "Starting....")
         sleep(1)
 
