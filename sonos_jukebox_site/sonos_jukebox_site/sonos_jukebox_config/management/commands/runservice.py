@@ -162,7 +162,10 @@ class SignalInterpretor(object):
 
     def Interpret(self, letterTrainCounter, numberTrainCounter):
         letterDict = dict({1:"A", 2:"B", 3:"C", 4:"D", 5:"E",6:"F",7:"G", 8:"H"})
-        return "%s%s" % (letterDict[letterTrainCounter], numberTrainCounter)
+        if letterTrainCounter in letterDict:
+            return "%s%s" % (letterDict[letterTrainCounter], numberTrainCounter)
+        else:
+            return "Z99"
 
 
 
