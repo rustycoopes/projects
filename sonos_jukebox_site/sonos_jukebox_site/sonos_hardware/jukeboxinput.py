@@ -1,9 +1,10 @@
 import logging
 import sys
 import threading
+import time
 from breadboardinputs import BreadBoardInput
 import RPi.GPIO as GPIO
-from time import sleep
+
 
 # ----------------------------------------------------------------------------------------
 # Class Purpose
@@ -54,19 +55,33 @@ class JukeboxSignalReceiver(threading.Thread):
         
         currentSignalState = False
         
-        
         while JukeboxSignalReceiver.run:
             # Key is signalled, and thats a new value, compared to other states.
             if self.hardware.KeyInputIsSignalled() and currentSignalState == False:
-                currentSignalState = True
-                self.callback.Signalled();
-                logging.info("Breadboard Signal On")
+                if self.is_genuine_key_signal(True):
+                    currentSignalState = True
+                    self.callback.Signalled();
+                    logging.info("Breadboard Signal On")
             
             # Key is no longer signalled, we reset state, but dont tell via callback
             elif not self.hardware.KeyInputIsSignalled() and currentSignalState == True:
-                currentSignalState = False
-                logging.info("Breadboard Signal Off")
+                if self.is_genuine_key_signal(False):
+                    currentSignalState = False
+                    logging.info("Breadboard Signal Off")
+ 
+    # This method is to reduce jitter in the signals.  If this is a genuine change in
+    # signal state, we will see a constant True/False over a period of 200 checks ! 
+    def is_genuine_key_signal(self, new_state):
+        starting_time = time.time()
+        elapsed_time = 0
 
+        for i in range (200):
+            if self.hardware.KeyInputIsSignalled()  != new_state: 
+                elapsed_time = time.time() - starting_time
+#               print ("FALSE INPUT SIGNAL check time recorded: %.3f" %elapsed_time)
+                return False
+        return True
+        
 
     @staticmethod
     def stopProcessing():

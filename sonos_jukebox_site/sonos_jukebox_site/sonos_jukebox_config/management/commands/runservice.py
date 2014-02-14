@@ -34,9 +34,8 @@ class JukeboxService(JukeboxSignalCallback):
     numberTrainCounter = 0
     lastSignalTime = None
     
-    MAX_INTRA_TRAIN_GAP = 1
-    MAX_MID_TRAIN_GAP = 3
-    MAX_RESTART_PRESS = 5
+    MIN_GAP_TO_START_NUM_TRAIN = 150
+    END_OF_USER_INPUT_GAP = 500
     SIGNAL_NOT_SET = 0
     
     signalLock = None
@@ -59,17 +58,25 @@ class JukeboxService(JukeboxSignalCallback):
         logging.info( 'Jukebox Service running')
         self.lastSignalTime = datetime.datetime.now()
         LCDScreen.updateStatus("Sonos Jukebox", "Ready....")
-        
+    
         while 1:
-            # get any key presses
             keyPress =  self.SignalsToKeyUpdater()
-
-            # if there are any, then process them !
+            # get any key , then process them !
             if keyPress != None :
                 logging.info( 'Key press waiting to be processed.  Sending to processor')
                 self.keyProcessor.ProcessKey(keyPress)
                 LCDScreen.updateStatus("Sonos Jukebox", "Ready....")
  
+ 
+    
+    #----------------------------------------------------------------------------
+    # Return the difference between current time and the last signal
+    #----------------------------------------------------------------------------
+    def get_milisecond_difference(self):
+        timeSinceLastSignal = datetime.datetime.now() - self.lastSignalTime
+        miliSecSinceLastSignal = timeSinceLastSignal.total_seconds() * 1000
+        return miliSecSinceLastSignal
+    
     #----------------------------------------------------------------------------
     # Call back method from hardware monitor.  This gets the call backs and then
     # Tries to read them as a number of letter counts and number counts..
@@ -78,8 +85,8 @@ class JukeboxService(JukeboxSignalCallback):
     def Signalled(self):
         logging.info( 'Received signal')
         
-        timeSinceLastSignal = datetime.datetime.now() - self.lastSignalTime
-
+        miliSecSinceLastSignal = self.get_milisecond_difference()
+        
         logging.info("Aquiring lock on train counters for incrementing")
         self.signalLock.acquire()
         
@@ -90,12 +97,12 @@ class JukeboxService(JukeboxSignalCallback):
             self.numberTrainCounter = self.SIGNAL_NOT_SET
             
         # there has been a pause and we have restarted getting signals. this will be the gap between numbers and letters.
-        elif timeSinceLastSignal.total_seconds() >= self.MAX_INTRA_TRAIN_GAP and timeSinceLastSignal.total_seconds() <= self.MAX_MID_TRAIN_GAP:
-            logging.info(" 1-3 sec delay between this and last input - starting number count = 1")
+        elif miliSecSinceLastSignal >= self.MIN_GAP_TO_START_NUM_TRAIN and miliSecSinceLastSignal <= self.END_OF_USER_INPUT_GAP:
+            logging.info("short pause between this and last input - starting number count = 1")
             self.numberTrainCounter = 1
         
         # timeout.. either we have read everything or not - nothing else if happening.
-        elif timeSinceLastSignal.total_seconds() < self.MAX_INTRA_TRAIN_GAP:
+        elif miliSecSinceLastSignal < self.END_OF_USER_INPUT_GAP:
             if self.numberTrainCounter == self.SIGNAL_NOT_SET :
                 self.letterTrainCounter = self.letterTrainCounter + 1
                 logging.info("Incrementing letter count, now %s" % self.letterTrainCounter)
@@ -104,7 +111,7 @@ class JukeboxService(JukeboxSignalCallback):
                 logging.info("Incrementing number count, now %s" % self.numberTrainCounter)
         
         else:
-            logging.info("Ignored press %s seconds since last" % timeSinceLastSignal.seconds)
+            logging.info("Ignored press %s milisecs since last" % miliSecSinceLastSignal)
         
         
         self.lastSignalTime = datetime.datetime.now()
@@ -120,10 +127,10 @@ class JukeboxService(JukeboxSignalCallback):
     def SignalsToKeyUpdater(self):
         
         self.signalLock.acquire()
-        timeSinceLastSignal = datetime.datetime.now() - self.lastSignalTime
-        
+        miliSecSinceLastSignal = self.get_milisecond_difference()
+            
         # Read timed out we have numbers but no letters- ignore data.
-        if timeSinceLastSignal.total_seconds() > self.MAX_RESTART_PRESS and self.letterTrainCounter != self.SIGNAL_NOT_SET:
+        if miliSecSinceLastSignal > self.END_OF_USER_INPUT_GAP and self.letterTrainCounter != self.SIGNAL_NOT_SET:
             logging.info("Aquiring lock on train counters for resetting number and letter counts due to TIMEOUT (%s secs since last press)" % timeSinceLastSignal.total_seconds())
             self.letterTrainCounter = self.SIGNAL_NOT_SET
             self.numberTrainCounter = self.SIGNAL_NOT_SET
@@ -131,7 +138,7 @@ class JukeboxService(JukeboxSignalCallback):
             return None
         
         # Data is ready to return. - we have letter and number counts, and we have left enough time to ensure there are no more ocming.
-        elif self.letterTrainCounter != self.SIGNAL_NOT_SET and self.numberTrainCounter != self.SIGNAL_NOT_SET and timeSinceLastSignal.seconds > self.MAX_MID_TRAIN_GAP:
+        elif self.letterTrainCounter != self.SIGNAL_NOT_SET and self.numberTrainCounter != self.SIGNAL_NOT_SET and miliSecSinceLastSignal > self.END_OF_USER_INPUT_GAP:
             logging.info("Signals ready to process !!! - Aquiring lock on train counters for resetting number and letter counts due to them being read")
             si = SignalInterpretor()
             currentKey = si.Interpret(self.letterTrainCounter, self.numberTrainCounter)
@@ -154,7 +161,7 @@ class JukeboxService(JukeboxSignalCallback):
 class SignalInterpretor(object):
 
     def Interpret(self, letterTrainCounter, numberTrainCounter):
-        letterDict = dict({1:"A", 2:"B"})
+        letterDict = dict({1:"A", 2:"B", 3:"C", 4:"D", 5:"E",6:"F",7:"G", 8:"H"})
         return "%s%s" % (letterDict[letterTrainCounter], numberTrainCounter)
 
 
