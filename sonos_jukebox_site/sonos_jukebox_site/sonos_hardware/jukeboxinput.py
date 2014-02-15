@@ -4,7 +4,7 @@ import threading
 import time
 from breadboardinputs import BreadBoardInput
 import RPi.GPIO as GPIO
-
+from time import sleep
 
 # ----------------------------------------------------------------------------------------
 # Class Purpose
@@ -37,11 +37,14 @@ class JukeboxSignalReceiver(threading.Thread):
     # Link to a calling class instance
     callback = None
     
+    lastSignalTime = None
+    
     def __init__(self, jukeboxCallback):
         super(JukeboxSignalReceiver, self).__init__()
         self.hardware = BreadBoardInput()
         self.callback = jukeboxCallback
- 
+	self.lastSignalTime = time.time()
+     
 
     def run(self):
         
@@ -61,13 +64,15 @@ class JukeboxSignalReceiver(threading.Thread):
                 if self.is_genuine_key_signal(True):
                     currentSignalState = True
                     self.callback.Signalled();
-                    logging.info("Breadboard Signal On")
+                    elapsed_time = time.time() - self.lastSignalTime
+                    logging.info("Signalled time since last signal: %.3f" %elapsed_time)
+                    self.lastSignalTime = time.time()
             
             # Key is no longer signalled, we reset state, but dont tell via callback
             elif not self.hardware.KeyInputIsSignalled() and currentSignalState == True:
                 if self.is_genuine_key_signal(False):
                     currentSignalState = False
-                    logging.info("Breadboard Signal Off")
+                 
  
     # This method is to reduce jitter in the signals.  If this is a genuine change in
     # signal state, we will see a constant True/False over a period of 200 checks ! 
@@ -75,7 +80,7 @@ class JukeboxSignalReceiver(threading.Thread):
         starting_time = time.time()
         elapsed_time = 0
 
-        for i in range (200):
+        for i in range (100):
             if self.hardware.KeyInputIsSignalled()  != new_state: 
                 elapsed_time = time.time() - starting_time
 #               print ("FALSE INPUT SIGNAL check time recorded: %.3f" %elapsed_time)

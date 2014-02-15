@@ -30,13 +30,13 @@ class JukeboxService(JukeboxSignalCallback):
     currentKey = None
     currentKeyUpdateTime = None
     
-    letterTrainCounter = 0
-    numberTrainCounter = 0
+    letterTrainCounter = -1
+    numberTrainCounter = -1
     lastSignalTime = None
     
     MIN_GAP_TO_START_NUM_TRAIN = 150
-    END_OF_USER_INPUT_GAP = 500
-    SIGNAL_NOT_SET = 0
+    END_OF_USER_INPUT_GAP = 2000
+    SIGNAL_NOT_SET = -1
     
     signalLock = None
     
@@ -87,13 +87,13 @@ class JukeboxService(JukeboxSignalCallback):
         
         miliSecSinceLastSignal = self.get_milisecond_difference()
         
-        logging.info("Aquiring lock on train counters for incrementing")
-        self.signalLock.acquire()
+#        logging.info("Aquiring lock on train counters for incrementing")
+#        self.signalLock.acquire()
         
         # No previous signal, we are just starting to get one.
         if self.letterTrainCounter == self.SIGNAL_NOT_SET:
             logging.info("No previous state - starting letter count = 1")
-            self.letterTrainCounter = 1
+            self.letterTrainCounter = 0
             self.numberTrainCounter = self.SIGNAL_NOT_SET
             
         # there has been a pause and we have restarted getting signals. this will be the gap between numbers and letters.
@@ -115,7 +115,7 @@ class JukeboxService(JukeboxSignalCallback):
         
         
         self.lastSignalTime = datetime.datetime.now()
-        self.signalLock.release()
+ #       self.signalLock.release()
 
     
     #----------------------------------------------------------------------------
@@ -126,15 +126,15 @@ class JukeboxService(JukeboxSignalCallback):
     #----------------------------------------------------------------------------
     def SignalsToKeyUpdater(self):
         
-        self.signalLock.acquire()
+  #      self.signalLock.acquire()
         miliSecSinceLastSignal = self.get_milisecond_difference()
             
         # Read timed out we have numbers but no letters- ignore data.
-        if miliSecSinceLastSignal > self.END_OF_USER_INPUT_GAP and self.letterTrainCounter != self.SIGNAL_NOT_SET:
-            logging.info("Aquiring lock on train counters for resetting number and letter counts due to TIMEOUT (%s secs since last press)" % timeSinceLastSignal.total_seconds())
+        if miliSecSinceLastSignal > self.END_OF_USER_INPUT_GAP and self.letterTrainCounter != self.SIGNAL_NOT_SET and self.numberTrainCounter == self.SIGNAL_NOT_SET:
+            logging.info("Aquiring lock on train counters for resetting number and letter counts due to TIMEOUT (%s secs since last press)" % miliSecSinceLastSignal)
             self.letterTrainCounter = self.SIGNAL_NOT_SET
             self.numberTrainCounter = self.SIGNAL_NOT_SET
-            self.signalLock.release()
+ #           self.signalLock.release()
             return None
         
         # Data is ready to return. - we have letter and number counts, and we have left enough time to ensure there are no more ocming.
@@ -145,10 +145,10 @@ class JukeboxService(JukeboxSignalCallback):
         
             self.letterTrainCounter = self.SIGNAL_NOT_SET
             self.numberTrainCounter = self.SIGNAL_NOT_SET
-            self.signalLock.release()
+  #          self.signalLock.release()
             return currentKey
         else:
-            self.signalLock.release()
+   #         self.signalLock.release()
             return None
 
 
@@ -161,6 +161,9 @@ class JukeboxService(JukeboxSignalCallback):
 class SignalInterpretor(object):
 
     def Interpret(self, letterTrainCounter, numberTrainCounter):
+        logging.info("LETTERS (%s)" % letterTrainCounter)
+        logging.info("NUMBERS (%s)" % numberTrainCounter)
+      
         letterDict = dict({1:"A", 2:"B", 3:"C", 4:"D", 5:"E",6:"F",7:"G", 8:"H"})
         if letterTrainCounter in letterDict:
             return "%s%s" % (letterDict[letterTrainCounter], numberTrainCounter)
