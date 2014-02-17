@@ -35,7 +35,7 @@ class JukeboxService(JukeboxSignalCallback):
     lastSignalTime = None
     
     MIN_GAP_TO_START_NUM_TRAIN = 150
-    END_OF_USER_INPUT_GAP = 2000
+    END_OF_USER_INPUT_GAP = 1000
     SIGNAL_NOT_SET = -1
     
     signalLock = None
@@ -60,6 +60,7 @@ class JukeboxService(JukeboxSignalCallback):
         LCDScreen.updateStatus("Sonos Jukebox", "Ready....")
     
         while 1:
+            sleep(1)
             keyPress =  self.SignalsToKeyUpdater()
             # get any key , then process them !
             if keyPress != None :
@@ -87,7 +88,7 @@ class JukeboxService(JukeboxSignalCallback):
         
         miliSecSinceLastSignal = self.get_milisecond_difference()
         
-#        logging.info("Aquiring lock on train counters for incrementing")
+        logging.info("Aquiring lock on train counters for incrementing")
 #        self.signalLock.acquire()
         
         # No previous signal, we are just starting to get one.

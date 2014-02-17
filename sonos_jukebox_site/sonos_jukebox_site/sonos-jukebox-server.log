@@ -1,89 +1,100 @@
-02-15 06:28 root         INFO     LCD light turned off
-02-15 06:28 root         INFO     LCD manager created
-02-15 06:28 root         INFO     LCD light turned on
-02-15 06:28 root         INFO     LCD screen on/off manager running
-02-15 06:28 root         INFO     LCD Message set to "Sonos Jukebox"
-02-15 06:28 root         INFO     LCD Message set to "Sonos Jukebox"
-02-15 06:28 root         INFO     Service command starting
-02-15 06:28 root         INFO     found the following sonos servers : 192.168.1.81,192.168.1.87,192.168.1.79,192.168.1.78,192.168.1.77,192.168.1.80
-02-15 06:28 root         INFO     Jukebox Service running
-02-15 06:28 root         INFO     Now listening to jukebox inputs
-02-15 06:28 root         INFO     LCD Message set to "Sonos Jukebox"
-02-15 06:28 root         INFO     Received signal
-02-15 06:28 root         INFO     No previous state - starting letter count = 1
-02-15 06:28 root         INFO     Signalled time since last signal: 7.034
-02-15 06:28 root         INFO     Received signal
-02-15 06:28 root         INFO     Incrementing letter count, now 1
-02-15 06:28 root         INFO     Signalled time since last signal: 0.053
-02-15 06:28 root         INFO     Received signal
-02-15 06:28 root         INFO     short pause between this and last input - starting number count = 1
-02-15 06:28 root         INFO     Signalled time since last signal: 0.244
-02-15 06:28 root         INFO     Signals ready to process !!! - Aquiring lock on train counters for resetting number and letter counts due to them being read
-02-15 06:28 root         INFO     LETTERS (1)
-02-15 06:28 root         INFO     NUMBERS (1)
-02-15 06:28 root         INFO     Key press waiting to be processed.  Sending to processor
-02-15 06:28 root         INFO     Sent short cut "A1"
-02-15 06:28 root         INFO     LCD Message set to "Keys Received"
-02-15 06:28 django.db.backends DEBUG    (0.010) SELECT `sonos_jukebox_config_jukeboxshortcut`.`id`, `sonos_jukebox_config_jukeboxshortcut`.`keys`, `sonos_jukebox_config_jukeboxshortcut`.`type`, `sonos_jukebox_config_jukeboxshortcut`.`track` FROM `sonos_jukebox_config_jukeboxshortcut` WHERE `sonos_jukebox_config_jukeboxshortcut`.`keys` = 'A1' ; args=('A1',)
-02-15 06:28 root         INFO     LCD Message set to "Shortcut"
-02-15 06:28 django.db.backends DEBUG    (0.021) SELECT `sonos_jukebox_config_configuration`.`id`, `sonos_jukebox_config_configuration`.`key`, `sonos_jukebox_config_configuration`.`value` FROM `sonos_jukebox_config_configuration` WHERE `sonos_jukebox_config_configuration`.`key` = 'TARGET_SPEAKER' ; args=('TARGET_SPEAKER',)
-02-15 06:28 root         INFO     Short cut track is"Rod" running from "Pandora"
-02-15 06:28 root         INFO     Successfully read speaker to send to as "Kitchen"
-02-15 06:28 root         INFO     found the following sonos servers : 192.168.1.78,192.168.1.77,192.168.1.87,192.168.1.79,192.168.1.80,192.168.1.81
-02-15 06:28 root         INFO     LCD Message set to "Pandora"
-02-15 06:28 root         INFO     logging into pandora
-02-15 06:28 root         INFO     loading station list
-02-15 06:28 root         INFO     station list loaded 
-02-15 06:28 root         INFO     found track "Rod Stewart Radio"
-02-15 06:28 root         INFO     found track "Rod Stewart Radio"
-02-15 06:28 root         INFO     LCD Message set to "Pl: Rod Stewart Radio"
-02-15 06:28 requests.packages.urllib3.connectionpool INFO     Starting new HTTP connection (1): 192.168.1.80
-02-15 06:28 requests.packages.urllib3.connectionpool DEBUG    Setting read timeout to None
-02-15 06:28 requests.packages.urllib3.connectionpool DEBUG    "GET /status/zp HTTP/1.1" 200 None
-02-15 06:28 root         INFO     Skipping player "Lounge (R)"
-02-15 06:28 requests.packages.urllib3.connectionpool INFO     Starting new HTTP connection (1): 192.168.1.81
-02-15 06:28 requests.packages.urllib3.connectionpool DEBUG    Setting read timeout to None
-02-15 06:28 requests.packages.urllib3.connectionpool DEBUG    "GET /status/zp HTTP/1.1" 200 None
-02-15 06:28 root         INFO     Playing on speaker 192.168.1.81
-02-15 06:28 requests.packages.urllib3.connectionpool INFO     Starting new HTTP connection (1): 192.168.1.81
-02-15 06:28 requests.packages.urllib3.connectionpool DEBUG    Setting read timeout to None
-02-15 06:28 requests.packages.urllib3.connectionpool DEBUG    "POST /MediaRenderer/AVTransport/Control HTTP/1.1" 500 347
-02-15 06:28 root         ERROR    Failed calling 192.168.1.81
-02-15 06:28 requests.packages.urllib3.connectionpool INFO     Starting new HTTP connection (1): 192.168.1.78
-02-15 06:28 requests.packages.urllib3.connectionpool DEBUG    Setting read timeout to None
-02-15 06:28 requests.packages.urllib3.connectionpool DEBUG    "GET /status/zp HTTP/1.1" 200 None
-02-15 06:28 root         INFO     Skipping player "Dining Room"
-02-15 06:28 requests.packages.urllib3.connectionpool INFO     Starting new HTTP connection (1): 192.168.1.77
-02-15 06:28 requests.packages.urllib3.connectionpool DEBUG    Setting read timeout to None
-02-15 06:28 requests.packages.urllib3.connectionpool DEBUG    "GET /status/zp HTTP/1.1" 200 None
-02-15 06:28 root         INFO     Skipping player "Basement"
-02-15 06:28 requests.packages.urllib3.connectionpool INFO     Starting new HTTP connection (1): 192.168.1.87
-02-15 06:28 requests.packages.urllib3.connectionpool DEBUG    Setting read timeout to None
-02-15 06:28 requests.packages.urllib3.connectionpool DEBUG    "GET /status/zp HTTP/1.1" 200 None
-02-15 06:28 root         INFO     Skipping player "Study"
-02-15 06:28 requests.packages.urllib3.connectionpool INFO     Starting new HTTP connection (1): 192.168.1.79
-02-15 06:28 requests.packages.urllib3.connectionpool DEBUG    Setting read timeout to None
-02-15 06:28 requests.packages.urllib3.connectionpool DEBUG    "GET /status/zp HTTP/1.1" 200 None
-02-15 06:28 root         INFO     Skipping player "Lounge (L)"
-02-15 06:28 root         INFO     LCD Message set to "Sonos Jukebox"
-02-15 06:28 root         INFO     LCD Message set to "Sonos Jukebox"
-02-15 06:28 root         INFO     Received signal
-02-15 06:28 root         INFO     No previous state - starting letter count = 1
-02-15 06:28 root         INFO     Signalled time since last signal: 19.463
-02-15 06:28 root         INFO     Aquiring lock on train counters for resetting number and letter counts due to TIMEOUT (19483.915 secs since last press)
-02-15 06:28 root         INFO     Received signal
-02-15 06:28 root         INFO     No previous state - starting letter count = 1
-02-15 06:28 root         INFO     Signalled time since last signal: 0.141
-02-15 06:28 root         INFO     Received signal
-02-15 06:28 root         INFO     short pause between this and last input - starting number count = 1
-02-15 06:28 root         INFO     Signalled time since last signal: 0.199
-02-15 06:28 root         INFO     Signals ready to process !!! - Aquiring lock on train counters for resetting number and letter counts due to them being read
-02-15 06:28 root         INFO     LETTERS (0)
-02-15 06:28 root         INFO     NUMBERS (1)
-02-15 06:28 root         INFO     Key press waiting to be processed.  Sending to processor
-02-15 06:28 root         INFO     Sent short cut "Z99"
-02-15 06:28 root         INFO     LCD Message set to "Keys Received"
-02-15 06:28 django.db.backends DEBUG    (0.011) SELECT `sonos_jukebox_config_jukeboxshortcut`.`id`, `sonos_jukebox_config_jukeboxshortcut`.`keys`, `sonos_jukebox_config_jukeboxshortcut`.`type`, `sonos_jukebox_config_jukeboxshortcut`.`track` FROM `sonos_jukebox_config_jukeboxshortcut` WHERE `sonos_jukebox_config_jukeboxshortcut`.`keys` = 'Z99' ; args=('Z99',)
-02-15 06:28 root         ERROR    Shortcut not found for Z99
-02-15 06:28 root         INFO     LCD Message set to "ERROR"
-02-15 06:28 root         INFO     LCD Message set to "Sonos Jukebox"
+02-16 15:15 root         INFO     LCD light turned off
+02-16 15:15 root         INFO     LCD manager created
+02-16 15:15 root         INFO     LCD light turned on
+02-16 15:15 root         INFO     LCD screen on/off manager running
+02-16 15:15 root         INFO     LCD Message set to "Sonos Jukebox"
+02-16 15:15 root         INFO     LCD Message set to "Sonos Jukebox"
+02-16 15:15 root         INFO     Service command starting
+02-16 15:15 root         INFO     found the following sonos servers : 192.168.1.81,192.168.1.87,192.168.1.78,192.168.1.79,192.168.1.77,192.168.1.80
+02-16 15:15 root         INFO     Jukebox Service running
+02-16 15:15 root         INFO     Now listening to jukebox inputs
+02-16 15:15 root         INFO     LCD Message set to "Sonos Jukebox"
+02-16 15:15 root         INFO     Received signal
+02-16 15:15 root         INFO     Aquiring lock on train counters for incrementing
+02-16 15:15 root         INFO     No previous state - starting letter count = 1
+02-16 15:15 root         INFO     Signalled time since last signal: 8.000
+02-16 15:15 root         INFO     Received signal
+02-16 15:15 root         INFO     Aquiring lock on train counters for incrementing
+02-16 15:15 root         INFO     Incrementing letter count, now 1
+02-16 15:15 root         INFO     Signalled time since last signal: 0.095
+02-16 15:15 root         INFO     Received signal
+02-16 15:15 root         INFO     Aquiring lock on train counters for incrementing
+02-16 15:15 root         INFO     short pause between this and last input - starting number count = 1
+02-16 15:15 root         INFO     Signalled time since last signal: 0.237
+02-16 15:15 root         INFO     Received signal
+02-16 15:15 root         INFO     Aquiring lock on train counters for incrementing
+02-16 15:15 root         INFO     Incrementing number count, now 2
+02-16 15:15 root         INFO     Signalled time since last signal: 0.074
+02-16 15:15 root         INFO     Signals ready to process !!! - Aquiring lock on train counters for resetting number and letter counts due to them being read
+02-16 15:15 root         INFO     LETTERS (1)
+02-16 15:15 root         INFO     NUMBERS (2)
+02-16 15:15 root         INFO     Key press waiting to be processed.  Sending to processor
+02-16 15:15 root         INFO     Sent short cut "A2"
+02-16 15:15 root         INFO     LCD Message set to "Keys Received"
+02-16 15:15 django.db.backends DEBUG    (0.007) SELECT `sonos_jukebox_config_jukeboxshortcut`.`id`, `sonos_jukebox_config_jukeboxshortcut`.`keys`, `sonos_jukebox_config_jukeboxshortcut`.`type`, `sonos_jukebox_config_jukeboxshortcut`.`track` FROM `sonos_jukebox_config_jukeboxshortcut` WHERE `sonos_jukebox_config_jukeboxshortcut`.`keys` = 'A2' ; args=('A2',)
+02-16 15:15 root         INFO     LCD Message set to "Shortcut"
+02-16 15:15 django.db.backends DEBUG    (0.004) SELECT `sonos_jukebox_config_configuration`.`id`, `sonos_jukebox_config_configuration`.`key`, `sonos_jukebox_config_configuration`.`value` FROM `sonos_jukebox_config_configuration` WHERE `sonos_jukebox_config_configuration`.`key` = 'TARGET_SPEAKER' ; args=('TARGET_SPEAKER',)
+02-16 15:15 root         INFO     Short cut track is"Def Leppard" running from "Pandora"
+02-16 15:15 root         INFO     Successfully read speaker to send to as "Study"
+02-16 15:15 root         INFO     found the following sonos servers : 192.168.1.81,192.168.1.80,192.168.1.77,192.168.1.79,192.168.1.87,192.168.1.78
+02-16 15:15 root         INFO     LCD Message set to "Pandora"
+02-16 15:15 root         INFO     logging into pandora
+02-16 15:15 root         INFO     loading station list
+02-16 15:15 root         INFO     station list loaded 
+02-16 15:15 root         INFO     found track "Def Leppard Radio"
+02-16 15:15 root         INFO     found track "Def Leppard Radio"
+02-16 15:15 root         INFO     LCD Message set to "Pl: Def Leppard Radio"
+02-16 15:15 requests.packages.urllib3.connectionpool INFO     Starting new HTTP connection (1): 192.168.1.79
+02-16 15:15 requests.packages.urllib3.connectionpool DEBUG    Setting read timeout to None
+02-16 15:15 requests.packages.urllib3.connectionpool DEBUG    "GET /status/zp HTTP/1.1" 200 None
+02-16 15:15 root         INFO     Skipping player "Lounge (L)"
+02-16 15:15 requests.packages.urllib3.connectionpool INFO     Starting new HTTP connection (1): 192.168.1.78
+02-16 15:15 requests.packages.urllib3.connectionpool DEBUG    Setting read timeout to None
+02-16 15:15 requests.packages.urllib3.connectionpool DEBUG    "GET /status/zp HTTP/1.1" 200 None
+02-16 15:15 root         INFO     Skipping player "Dining Room"
+02-16 15:15 requests.packages.urllib3.connectionpool INFO     Starting new HTTP connection (1): 192.168.1.81
+02-16 15:15 requests.packages.urllib3.connectionpool DEBUG    Setting read timeout to None
+02-16 15:16 root         INFO     Received signal
+02-16 15:16 root         INFO     Aquiring lock on train counters for incrementing
+02-16 15:16 root         INFO     No previous state - starting letter count = 1
+02-16 15:16 root         INFO     Signalled time since last signal: 21.756
+02-16 15:16 root         INFO     Received signal
+02-16 15:16 root         INFO     Aquiring lock on train counters for incrementing
+02-16 15:16 root         INFO     Incrementing letter count, now 1
+02-16 15:16 root         INFO     Signalled time since last signal: 0.095
+02-16 15:16 root         INFO     Received signal
+02-16 15:16 root         INFO     Aquiring lock on train counters for incrementing
+02-16 15:16 root         INFO     short pause between this and last input - starting number count = 1
+02-16 15:16 root         INFO     Signalled time since last signal: 0.227
+02-16 15:16 root         INFO     Received signal
+02-16 15:16 root         INFO     Aquiring lock on train counters for incrementing
+02-16 15:16 root         INFO     Incrementing number count, now 2
+02-16 15:16 root         INFO     Signalled time since last signal: 0.091
+02-16 15:16 root         INFO     Received signal
+02-16 15:16 root         INFO     Aquiring lock on train counters for incrementing
+02-16 15:16 root         INFO     Incrementing number count, now 3
+02-16 15:16 root         INFO     Signalled time since last signal: 0.086
+02-16 15:16 root         INFO     Received signal
+02-16 15:16 root         INFO     Aquiring lock on train counters for incrementing
+02-16 15:16 root         INFO     Ignored press 20215.959 milisecs since last
+02-16 15:16 root         INFO     Signalled time since last signal: 20.220
+02-16 15:16 root         INFO     Received signal
+02-16 15:16 root         INFO     Aquiring lock on train counters for incrementing
+02-16 15:16 root         INFO     Incrementing number count, now 4
+02-16 15:16 root         INFO     Signalled time since last signal: 0.101
+02-16 15:16 root         INFO     Received signal
+02-16 15:16 root         INFO     Aquiring lock on train counters for incrementing
+02-16 15:16 root         INFO     short pause between this and last input - starting number count = 1
+02-16 15:16 root         INFO     Signalled time since last signal: 0.235
+02-16 15:16 root         INFO     Received signal
+02-16 15:16 root         INFO     Aquiring lock on train counters for incrementing
+02-16 15:16 root         INFO     Incrementing number count, now 2
+02-16 15:16 root         INFO     Signalled time since last signal: 0.081
+02-16 15:16 root         INFO     Received signal
+02-16 15:16 root         INFO     Aquiring lock on train counters for incrementing
+02-16 15:16 root         INFO     Incrementing number count, now 3
+02-16 15:16 root         INFO     Signalled time since last signal: 0.071
+02-16 15:16 root         INFO     Received signal
+02-16 15:16 root         INFO     Aquiring lock on train counters for incrementing
+02-16 15:16 root         INFO     Incrementing number count, now 4
+02-16 15:16 root         INFO     Signalled time since last signal: 0.084
