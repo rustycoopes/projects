@@ -49,7 +49,9 @@ class JukeboxService(JukeboxSignalCallback):
             self.lastSignalTime = datetime.datetime.now()
             self.signalLock = threading.Lock()
         except:
-            logging.error('Error initialising jukebox service %s' % sys.exc_info()[1])
+            err =  sys.exc_info()[1]
+            LCDScreen.updateStatus("ERR", err)
+            logging.error('Error initialising jukebox service %s' % err)
 
     #----------------------------------------------------------------------------
     # Listens to hear key presses, then updates processes them if we have any
@@ -59,16 +61,19 @@ class JukeboxService(JukeboxSignalCallback):
         self.lastSignalTime = datetime.datetime.now()
         LCDScreen.updateStatus("Sonos Jukebox", "Ready....")
     
-        while 1:
-            sleep(1)
-            keyPress =  self.SignalsToKeyUpdater()
-            # get any key , then process them !
-            if keyPress != None :
-                logging.info( 'Key press waiting to be processed.  Sending to processor')
-                self.keyProcessor.ProcessKey(keyPress)
-                LCDScreen.updateStatus("Sonos Jukebox", "Ready....")
- 
- 
+        try:
+            while 1:
+                sleep(1)
+                keyPress =  self.SignalsToKeyUpdater()
+                # get any key , then process them !
+                if keyPress != None :
+                    logging.info( 'Key press waiting to be processed.  Sending to processor')
+                    self.keyProcessor.ProcessKey(keyPress)
+                    LCDScreen.updateStatus("Sonos Jukebox", "Ready....")
+        except:
+             err =  sys.exc_info()[1]
+             LCDScreen.updateStatus("ERR", err)
+             logging.error('Error processing keys %s' % err)
     
     #----------------------------------------------------------------------------
     # Return the difference between current time and the last signal
@@ -165,7 +170,7 @@ class SignalInterpretor(object):
         logging.info("LETTERS (%s)" % letterTrainCounter)
         logging.info("NUMBERS (%s)" % numberTrainCounter)
       
-        letterDict = dict({1:"A", 2:"B", 3:"C", 4:"D", 5:"E",6:"F",7:"G", 8:"H"})
+        letterDict = dict({1:"A", 2:"B", 3:"C", 4:"D", 5:"E",6:"F",7:"G", 8:"H", 9:"J",10:"K", 11:"L",12:"M",13:"N",14:"P"})
         if letterTrainCounter in letterDict:
             return "%s%s" % (letterDict[letterTrainCounter], numberTrainCounter)
         else:
