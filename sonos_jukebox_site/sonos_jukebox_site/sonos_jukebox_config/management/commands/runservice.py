@@ -49,7 +49,7 @@ class JukeboxService(JukeboxSignalCallback):
             self.lastSignalTime = datetime.datetime.now()
             self.signalLock = threading.Lock()
         except:
-            err =  sys.exc_info()[1]
+            err =  str(sys.exc_info()[1])
             LCDScreen.updateStatus("ERR", err)
             logging.error('Error initialising jukebox service %s' % err)
 
@@ -71,7 +71,7 @@ class JukeboxService(JukeboxSignalCallback):
                     self.keyProcessor.ProcessKey(keyPress)
                     LCDScreen.updateStatus("Sonos Jukebox", "Ready....")
         except:
-             err =  sys.exc_info()[1]
+             err =  str(sys.exc_info()[1])
              LCDScreen.updateStatus("ERR", err)
              logging.error('Error processing keys %s' % err)
     
@@ -196,7 +196,7 @@ class Command(BaseCommand):
             logging.info( 'Service command ending')
         except:
             logging.error('Error running service %s' % sys.exc_info()[1])
-            LCDScreen.updateStatus("ERROR",  sys.exc_info()[1] )
+            LCDScreen.updateStatus("ERROR",  str(sys.exc_info()[1]) )
      
 
 
